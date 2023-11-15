@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MediaContainer from '../../components/MediaContainer.astro';
+import Team from '../../components/Team.astro';
+import fetchApi from '../../api/strapi';
+import type Service from '../../interfaces/service';
+import Heading from '../../components/blocks/Heading.astro';
+import Paragraph from '../../components/blocks/Paragraph.astro';
+import List from '../../components/blocks/List.astro';
+
+const team = await fetchApi<Service[]>({
+  endpoint: 'teams?populate=*',
+  wrappedByKey: 'data',
+});
+
+const team_page = await fetchApi<Service[]>({
+  endpoint: 'team-page?populate=*',
+  wrappedByKey: 'data',
+});
+
+console.log(team_page)
+
+const image = {
+    url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',
+    mime: 'image/jpeg'
+}
+---
+
+<Layout title="Jeyran Balkhash">
+    <MediaContainer media={image} title='Команда JEYRAN & FISHING LODGE' />
+    {team_page.attributes.description.map((block: DescriptionBlocks) => {
+        switch(block.type) {
+          case 'heading':
+            return <Heading children={block.children} level={block.level} />
+          case 'paragraph':
+            return <Paragraph children={block.children} />
+          case 'list':
+            return <List children={block.children} />
+        }
+    })}
+    <div class="container mx-auto grid grid-cols-3">
+        {team.map(t => 
+            <Team img={t.attributes.photo.data.attributes} name={t.attributes.name} position={t.attributes.position} />
+        )}
+    </div>
+</Layout>

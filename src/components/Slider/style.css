@@ -1,0 +1,43 @@
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    padding: 20px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12.5px);
+    width: auto;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+}
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1;
+}
+.swiper-pagination-bullet-active {
+    width: 60px;
+    border-radius: 100px;
+    background-color: #949494;
+    position: relative;
+}
+.swiper-pagination-bullet-active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #fff;
+    border-radius: 100px;
+    animation-duration: 5s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}

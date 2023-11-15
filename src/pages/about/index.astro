@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MediaContainer from '../../components/MediaContainer.astro';
+import fetchApi from '../../api/strapi';
+import type About from '../../interfaces/about';
+import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks';
+import Heading from '../../components/blocks/Heading.astro';
+import Paragraph from '../../components/blocks/Paragraph.astro';
+import List from '../../components/blocks/List.astro';
+import AboutCard from '../../components/AboutCard.astro';
+
+const about = await fetchApi<About>({
+  endpoint: 'about-page?populate=*',
+  wrappedByKey: 'data',
+});
+
+const image = {
+    url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',
+    mime: 'image/jpeg'
+}
+const heading = [{
+    type: 'text',
+    text: 'жемчужина Семиречья'
+}]
+const paragraph = [{
+    type: 'text',
+    text: 'В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья.'
+}]
+
+const aboutAdv = await fetchApi({
+  endpoint: 'about-advantages?populate=*',
+  wrappedByKey: 'data',
+});
+---
+
+<Layout title="Jeyran Balkhash">
+    <MediaContainer media={image} title='JEYRAN & FISHING LODGE' />
+    <div class="py-100">
+        <Heading children={heading} level={1} />
+        <Paragraph children={paragraph} />
+    </div>
+    <MediaContainer media={image} big/>
+    <div class="py-100">
+        <Paragraph children={paragraph} />
+    </div>
+    <div class="pb-100">
+        {about.attributes.description.map((block: DescriptionBlocks) => {
+            switch(block.type) {
+              case 'heading':
+                return <Heading children={block.children} level={block.level} />
+              case 'paragraph':
+                return <Paragraph children={block.children} />
+              case 'list':
+                return <List children={block.children} />
+            }
+        })}
+    </div>
+    <div class="pb-100">
+        {about.attributes.description_2.map((block: DescriptionBlocks) => {
+            switch(block.type) {
+              case 'heading':
+                return <Heading children={block.children} level={block.level} />
+              case 'paragraph':
+                return <Paragraph children={block.children} />
+              case 'list':
+                return <List children={block.children} />
+            }
+        })}
+    </div>
+    <div class="container mx-auto grid grid-cols-2 gap-x-8 gap-y-10">
+      {aboutAdv.map(enj =>
+      <AboutCard img={enj.attributes.image.data.attributes.url} title={enj.attributes.title} />)}
+    </div>
+</Layout>

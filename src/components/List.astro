@@ -1,0 +1,34 @@
+---
+import Card from './Card.astro';
+import type Boat from '../interfaces/boat';
+import type Room from '../interfaces/room';
+
+interface Props {
+    title: string,
+	cards: Boat[] | Room[],
+    withH1?: boolean,
+    wide?: boolean
+}
+
+const { title, cards, withH1, wide } = Astro.props;
+---
+
+<section class="pb-100">
+    {withH1 ? <h1 class="text-center text-64 uppercase mb-6 font-medium">{title}</h1>
+    : <h2 class="text-center text-64 uppercase mb-6 font-medium">{title}</h2>}
+    <div class={`grid container mx-auto gap-x-8 gap-y-6 grid-cols-1 ${wide?'md:grid-cols-3':'md:grid-cols-2'}`}>
+        {cards.map(card => 
+            <Card
+                title={card.attributes.title}
+                slug={card.attributes.slug}
+                media={card.attributes.media.data}
+                country={card.attributes.country_produced}
+                yearRelease={card.attributes.year_produced}
+                engine={card.attributes.engine}
+                pricePerDay={card.attributes.pricePerDay}
+                descr={card.attributes.description}
+                wide={wide}
+            />
+        )}
+    </div>
+</section>

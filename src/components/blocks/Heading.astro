@@ -1,0 +1,23 @@
+---
+interface Props {
+  children: {
+      type: string
+      text: string
+  }[]
+  level: number
+}
+
+const { children, level } = Astro.props;
+---
+
+{children.map(child => {
+    if (level === 1) return <h1 class="text-center text-64 uppercase font-medium">
+        {child.text}
+    </h1> 
+    if (level === 2) return <h2 class="text-center text-64 uppercase font-medium">
+        {child.text}
+    </h2>
+    if (level === 3) return <h3 class="text-center text-64 uppercase font-medium">
+        {child.text}
+    </h3>
+})}

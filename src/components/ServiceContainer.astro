@@ -1,0 +1,28 @@
+---
+import List from './blocks/List.astro';
+import MainSlider from './MainSlider';
+import Heading from './blocks/Heading.astro';
+import Paragraph from './blocks/Paragraph.astro';
+import type { DescriptionBlocks } from '../interfaces/descriptionBlocks';
+
+const { service } = Astro.props
+---
+
+<div>
+    <MainSlider slides={service.attributes.slider.data} client:load />
+    <div class="pb-100 pt-10">
+        <h2 class="text-center text-64 uppercase font-medium">{service.attributes.Title}</h2>
+        {service.attributes.price && <p class="text-center text-64 uppercase font-normal">от {service.attributes.price} ₸</p>}
+        {service.attributes.description.map((block: DescriptionBlocks) => {
+            switch(block.type) {
+                case 'heading':
+                    return <Heading children={block.children} level={block.level} />
+                case 'paragraph':
+                    return <Paragraph children={block.children} />
+                case 'list':
+                    return <List children={block.children} />
+            }
+        }
+        )}
+    </div>
+</div>

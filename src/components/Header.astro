@@ -1,0 +1,27 @@
+---
+import { navlinks } from '../config/navlinks';
+import LanguageDropDown from './LanguageDropDown'
+import MobileBurger from './MobileBurger'
+
+const { pathname } = Astro.url
+---
+
+<header class="py-3 bg-white">
+	<div class="flex justify-between text-xl font-medium container mx-auto px-5">
+		<div class="flex">
+			<a href="/" class="mr-10"><img src="/logo.svg" alt="logo"></a>
+			<ul class="hidden sm:flex items-center gap-6">
+				{navlinks.map(link => 
+					<li class={`${pathname.includes(link.path) ? 'text-main' : ''}`}>
+						<a href={`/${link.path}`}>{link.label}</a>
+					</li>
+				)}
+			</ul>
+		</div>
+		<div class="flex items-center gap-10">
+			<LanguageDropDown client:load/>
+			<MobileBurger client:load/>
+			<button class="fixed bottom-7 left-1/2 z-10 -translate-x-1/2 sm:translate-x-0 sm:static rounded-xl py-4 px-5 text-white bg-main">Забронировать</button>
+		</div>
+	</div>
+</header>

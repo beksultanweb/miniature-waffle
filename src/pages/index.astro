@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TextContainer from '../components/TextContainer.astro';
+import MediaContainer from '../components/MediaContainer.astro';
+import Services from '../components/Services.astro';
+import List from '../components/List.astro';
+import Map from '../components/Map.tsx';
+import MainSlider from '../components/MainSlider';
+import fetchApi from '../api/strapi';
+import type Service from '../interfaces/service';
+import type Boat from '../interfaces/boat';
+import type mainSlider from '../interfaces/mainSlider';
+
+
+const media = { 
+  url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',
+  mime: 'image/jpeg'
+};
+
+const services = await fetchApi<Service[]>({
+  endpoint: 'services?populate=*',
+  wrappedByKey: 'data',
+});
+
+const boats = await fetchApi<Boat[]>({
+  endpoint: 'boats?populate=*',
+  wrappedByKey: 'data',
+});
+
+const slides = await fetchApi<mainSlider>({
+  endpoint: 'main-slider?populate=*',
+  wrappedByKey: 'data',
+});
+
+// console.log(slides)
+
+const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
+---
+
+<Layout title="Jeyran Balkhash">
+    <MainSlider slides={slides.attributes.media.data} client:load />
+    <TextContainer 
+        title="JEYRAN & FISHING LODGE" 
+        p="В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья."
+        withH1
+    />
+    <MediaContainer media={media} big />
+    <Services cards={services} title="Наши услуги" />
+    <TextContainer
+        title="гармония с природой"
+        p="Река, разливаясь и разделяясь на несколько таких проток как Нарын, Жидели, Иир, Шубуркуна, Карабалта и Караозек, занимает огромное пространство общей площадью около 6500 квадратных километров и становится местом притяжения как заядлых Рыболовов, так и ценителей тихого, размеренного отдыха."
+    />
+    <MediaContainer media={media} />
+    <TextContainer
+        title="Мы знаем лучшие места для рыбалки"
+        p="Организация, как групповой рыбалки, так и индивидуальной. Моторные лодки с гидами. Баня. Барбекю зона. Бассейн с подогревом. Прогулки по озеру."
+    />
+    <MediaContainer media={media} />
+    <List cards={boats} title='парк моторных лодок и катеров' />
+    <MediaContainer media={media} title="лучшие места для рыбалки" />
+    <TextContainer
+        title="Как нас найти"
+        p="село Караозек в Балхашском районе Алматинской области Республики Казахстан. Входит в состав Куйганского сельского округа. Южное прибалхашье, дельта реки Или."
+        coords={coordinatesString}
+    />
+    <Map client:load />
+</Layout>

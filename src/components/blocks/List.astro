@@ -1,0 +1,20 @@
+---
+interface Props {
+  children: {
+      children: {
+          type: string
+          text: string
+      }[]
+  }[]
+}
+
+const { children } = Astro.props;
+---
+
+<ul class="container mx-auto mt-6 flex flex-col gap-2.5 list-disc">
+    {children.map(child => 
+        <li class="text-28 leading-130% font-normal">
+            {child.children[0].text}
+        </li>
+    )}
+</ul>
