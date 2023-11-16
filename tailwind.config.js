@@ -16,6 +16,9 @@ export default {
         32: '32px',
         64: '64px'
       },
+      minWidth: {
+        320: '320px',
+      },
       width: {
         300: '300px',
         800: '800px',
@@ -24,6 +27,7 @@ export default {
       },
       height: {
         300: '300px',
+        364: '364px',
         384: '384px',
         400: '400px',
         600: '600px',

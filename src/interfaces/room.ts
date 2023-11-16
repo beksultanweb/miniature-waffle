@@ -1,5 +1,5 @@
 import type Advantage from "./advantages"
-import type DescriptionBlocks from "./descriptionBlocks"
+import type { DescriptionBlocks } from "./descriptionBlocks"
 
 export default interface Room {
     id: number

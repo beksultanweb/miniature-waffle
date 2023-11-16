@@ -12,7 +12,7 @@ const Map = () => {
         <div className="py-100">
             <div className="sm:w-800 mx-auto mb-8">
                 <h2 className="text-32 sm:text-64 text-center uppercase leading-100% mb-6 font-medium">Как до нас добраться</h2>
-                <div className="hidden flex justify-between px-7">
+                <div className="flex mobile-slider overflow-auto whitespace-nowrap sm:justify-center gap-1 sm:gap-2">
                     <button className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${activeTab === 1 ? 'text-white bg-main' : 'text-black bg-white'}`}
                     onClick={() => handleClick(1)}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

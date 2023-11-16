@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../style.css';
 import '@fontsource/finlandica';
 
 interface Props {
@@ -30,6 +31,26 @@ const { title } = Astro.props;
 		<Header/>
 		<slot />
 		<Footer/>
+
+		<script>
+			var lastScrollTop = 0;
+			const header = document.querySelector('header');
+			
+			window.addEventListener("scroll", function(){
+			var st = window.scrollY || document.documentElement.scrollTop;
+			
+			if (header && st < lastScrollTop) {
+				header.style.display = 'inline'
+				header.style.position = 'fixed'
+				header.style.zIndex = '100'
+			}
+			else if (header) {
+				header.style.position = 'relative'
+				header.style.zIndex = '0'
+			}
+			lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+			}, false);
+		</script>
 	</body>
 </html>
 <style is:global>

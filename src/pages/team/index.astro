@@ -7,18 +7,19 @@ import type Service from '../../interfaces/service';
 import Heading from '../../components/blocks/Heading.astro';
 import Paragraph from '../../components/blocks/Paragraph.astro';
 import List from '../../components/blocks/List.astro';
+import type TeamPage from '../../interfaces/teampage';
+import type TeamMate from '../../interfaces/team';
+import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks';
 
-const team = await fetchApi<Service[]>({
+const team = await fetchApi<TeamMate[]>({
   endpoint: 'teams?populate=*',
   wrappedByKey: 'data',
 });
 
-const team_page = await fetchApi<Service[]>({
+const team_page = await fetchApi<TeamPage>({
   endpoint: 'team-page?populate=*',
   wrappedByKey: 'data',
 });
-
-console.log(team_page)
 
 const image = {
     url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',

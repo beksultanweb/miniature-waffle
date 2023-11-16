@@ -4,8 +4,9 @@ export default interface Boat {
         title: string
         country_produced: string
         engine: string
+        slug: string
         year_produced: string
-        images: {
+        media: {
             data: {
                 attributes: {
                     url: string

@@ -27,7 +27,7 @@ const paragraph = [{
     text: 'В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья.'
 }]
 
-const aboutAdv = await fetchApi({
+const aboutAdv = await fetchApi<any>({
   endpoint: 'about-advantages?populate=*',
   wrappedByKey: 'data',
 });
@@ -68,7 +68,7 @@ const aboutAdv = await fetchApi({
         })}
     </div>
     <div class="container mx-auto grid grid-cols-2 gap-x-8 gap-y-10">
-      {aboutAdv.map(enj =>
+      {aboutAdv.map((enj: any) =>
       <AboutCard img={enj.attributes.image.data.attributes.url} title={enj.attributes.title} />)}
     </div>
 </Layout>

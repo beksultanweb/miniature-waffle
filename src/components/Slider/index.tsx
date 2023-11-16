@@ -5,8 +5,7 @@ import type Slide from '../../interfaces/slide';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import './style.css'
-
+import './style.css';
 
 const Slider = ({ slides, wide }: Slide) => {
 	return (	
@@ -14,7 +13,10 @@ const Slider = ({ slides, wide }: Slide) => {
             modules={[Pagination, Autoplay]}
             slidesPerView={1}
             pagination={{
-                clickable: true
+                bulletClass: 'dot',
+                bulletActiveClass: 'dot-active',
+                clickable: true,
+                horizontalClass: 'custom-pagination'
             }}
             autoplay={{
                 delay: 5000,
@@ -23,7 +25,7 @@ const Slider = ({ slides, wide }: Slide) => {
         >
             {slides?.map((el, index) => 
                 <SwiperSlide key={index}>
-                    <img src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} className={`${wide?'h-400':'h-600'} object-cover`} alt='img' />
+                    <img src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} className={`h-364 ${wide?'sm:h-400':'sm:h-600'} object-cover`} alt='img' />
                 </SwiperSlide>
             )}
         </Swiper>
