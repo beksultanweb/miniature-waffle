@@ -4,6 +4,7 @@ import type Slide from "./slide"
 export default interface About {
     id: number
     attributes: {
+        main_description: DescriptionBlocks[]
         description: DescriptionBlocks[]
         description_2: DescriptionBlocks[]
         description_3: DescriptionBlocks[]
