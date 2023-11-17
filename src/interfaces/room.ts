@@ -13,7 +13,7 @@ export default interface Room {
                 attributes: {
                     url: string
                 }
-            }
+            }[]
         }
         main_description: DescriptionBlocks[]
         description_2: DescriptionBlocks[]
@@ -21,7 +21,27 @@ export default interface Room {
         advantages: {
             data: Advantage[]
         }
-        slob_b: any
-        slot_c: any
+        slot_b: {
+            data: {
+                id: number,
+                attributes: {
+                    name: string
+                    mime: string
+                    url: string
+                    alternativeText: string | null
+                }
+            }
+        }
+        slot_c: {
+            data: {
+                id: number,
+                attributes: {
+                    name: string
+                    alternativeText: string | null
+                    url: string
+                    mime: string
+                }
+            }[]
+        }
     }
 }

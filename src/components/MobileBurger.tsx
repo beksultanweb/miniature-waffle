@@ -18,13 +18,13 @@ const MobileBurger = () => {
                 </svg>}
             </div>
 
-            <ul className={`fixed z-30 bg-main text-white w-full bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center transition ease-in-out delay-150 ${open ? 'translate-y-0' : 'translate-y-110%'}`}>
+            <ul className={`fixed z-50 bg-main text-white w-full bottom-0 pb-5 left-1/2 -translate-x-1/2 flex flex-col items-center transition ease-in-out delay-150 ${open ? 'translate-y-0' : 'translate-y-110%'}`}>
                 <svg className="absolute -top-3 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">
                     <path d="M384 0.862656C367.684 2.10007 355.563 4.47414 344.28 6.68605C330.24 9.61119 319.44 11.7006 300 11.7006C281.981 11.7006 270.714 9.5491 257.441 7.01439L254.029 6.36279C238.277 3.34889 220.775 0 192 0C162.383 0 144.707 3.46542 128.591 6.62508L128.28 6.68605C114.24 9.61119 103.008 11.7006 84 11.7006C65.2411 11.7006 54.0555 9.50278 40.2703 6.79419L39.72 6.68605L38.9656 6.54202C27.9309 4.43475 15.8411 2.12598 0 0.893524V20H384V0.862656Z" fill="#0E86FF"/>
                 </svg>
 				{navlinks.map(link => 
-					<li key={link.label} className="py-4 active:bg-white">
-						<a href={`/${link.path}`}>{link.label}</a>
+					<li key={link.label} className="w-full text-center active:bg-white active:text-main">
+						<a className="block w-full py-4" href={`/${link.path}`}>{link.label}</a>
 					</li>
 				)}
 			</ul>

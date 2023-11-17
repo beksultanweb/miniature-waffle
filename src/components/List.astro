@@ -13,10 +13,10 @@ interface Props {
 const { title, cards, withH1, wide } = Astro.props;
 ---
 
-<section class="pb-100">
+<>
     {withH1 ? <h1 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{title}</h1>
     : <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{title}</h2>}
-    <div class={`grid container mx-auto px-5 gap-x-8 gap-y-6 grid-cols-1 ${wide?'md:grid-cols-3':'md:grid-cols-2'}`}>
+    <div class={`grid container mx-auto px-5 gap-x-8 gap-y-6 sm:gap-y-10 grid-cols-1 ${wide?'md:grid-cols-3':'md:grid-cols-2'}`}>
         {cards.map(card => 
             <Card
                 title={card.attributes.title}
@@ -31,4 +31,4 @@ const { title, cards, withH1, wide } = Astro.props;
             />
         )}
     </div>
-</section>
+</>

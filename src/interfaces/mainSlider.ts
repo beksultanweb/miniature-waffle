@@ -12,7 +12,7 @@ export default interface mainSlider {
                     height: number
                     mime: string
                 }
-            }
+            }[]
         }
     }
 }

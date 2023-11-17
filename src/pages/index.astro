@@ -32,8 +32,6 @@ const slides = await fetchApi<mainSlider>({
   wrappedByKey: 'data',
 });
 
-// console.log(slides)
-
 const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
 ---
 
@@ -56,7 +54,9 @@ const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
         p="Организация, как групповой рыбалки, так и индивидуальной. Моторные лодки с гидами. Баня. Барбекю зона. Бассейн с подогревом. Прогулки по озеру."
     />
     <MediaContainer media={media} />
-    <List cards={boats} title='парк моторных лодок и катеров' />
+    <div class="py-50 sm:py-100">
+      <List cards={boats} title='парк моторных лодок и катеров' />
+    </div>
     <MediaContainer media={media} title="лучшие места для рыбалки" />
     <TextContainer
         title="Как нас найти"

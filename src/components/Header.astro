@@ -12,8 +12,8 @@ const { pathname } = Astro.url
 			<a href="/" class="mr-10"><img src="/logo.svg" alt="logo"></a>
 			<ul class="hidden sm:flex items-center gap-6">
 				{navlinks.map(link => 
-					<li class={`${pathname.includes(link.path) ? 'text-main' : ''}`}>
-						<a href={`/${link.path}`}>{link.label}</a>
+					<li class={`${pathname.includes(link.path) ? 'text-main' : 'cursor-pointer'}`}>
+						<a class={`${pathname.includes(link.path) ? 'pointer-events-none' : 'cursor-pointer'}`} href={`/${link.path}`}>{link.label}</a>
 					</li>
 				)}
 			</ul>
@@ -21,7 +21,7 @@ const { pathname } = Astro.url
 		<div class="flex items-center gap-10">
 			<LanguageDropDown client:load/>
 			<MobileBurger client:load/>
-			<button class="fixed bottom-7 left-1/2 z-20 -translate-x-1/2 sm:translate-x-0 sm:static rounded-xl py-4 px-5 text-white bg-main">Забронировать</button>
+			<button class="fixed bottom-7 left-1/2 z-40 -translate-x-1/2 sm:translate-x-0 sm:static rounded-xl py-4 px-5 text-white bg-main">Забронировать</button>
 		</div>
 	</div>
 	<svg class="block sm:hidden absolute -bottom-3 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">

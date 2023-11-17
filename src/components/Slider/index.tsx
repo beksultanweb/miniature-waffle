@@ -7,7 +7,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import './style.css';
 
-const Slider = ({ slides, wide }: Slide) => {
+interface SlideProp {
+	slides: Slide[]
+    wide?: boolean
+}
+
+const Slider = ({ slides, wide }: SlideProp) => {
 	return (	
         <Swiper
             modules={[Pagination, Autoplay]}

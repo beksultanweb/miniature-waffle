@@ -7,7 +7,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import './style.css';
 
-const MainSlider = ({ slides }: Slide) => {
+interface SlideProp {
+	slides: Slide[]
+    wide?: boolean
+}
+
+
+const MainSlider = ({ slides }: SlideProp) => {
+	
 	return (
 		<section className='relative'>
 			<svg className="block sm:hidden absolute top-0 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">

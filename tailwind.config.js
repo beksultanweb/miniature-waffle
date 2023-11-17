@@ -9,6 +9,7 @@ export default {
         'gray-second': '#868686'
       },
       padding: {
+        50: '60px',
         100: '100px'
       },
       fontSize: {
@@ -32,7 +33,7 @@ export default {
         400: '400px',
         600: '600px',
         616: '616px',
-        800: '800px'
+        800: '766px'
       },
       fontFamily: {
         sans: ["Finlandica"],
@@ -41,6 +42,9 @@ export default {
         '100%': '100%',
         '110%': '110%',
         '130%': '130%'
+      },
+      gap: {
+        60: '60px'
       },
       gridTemplateColumns: {
         'footer': '1fr 40%'

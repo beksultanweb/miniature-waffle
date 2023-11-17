@@ -9,9 +9,9 @@ const Map = () => {
     }, [activeTab])
 
     return (
-        <div className="py-100">
-            <div className="sm:w-800 mx-auto mb-8">
-                <h2 className="text-32 sm:text-64 text-center uppercase leading-100% mb-6 font-medium">Как до нас добраться</h2>
+        <>
+            <div className="px-5 sm:px-0 sm:w-800 mx-auto my-5 sm:my-8">
+                <h2 className="text-32 sm:text-64 text-center uppercase leading-100% mb-4 sm:mb-6 font-medium">Как до нас добраться</h2>
                 <div className="flex mobile-slider overflow-auto whitespace-nowrap sm:justify-center gap-1 sm:gap-2">
                     <button className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${activeTab === 1 ? 'text-white bg-main' : 'text-black bg-white'}`}
                     onClick={() => handleClick(1)}>
@@ -56,7 +56,7 @@ const Map = () => {
             {activeTab === 2 && <div style={{position:'relative', overflow:'hidden'}}>
                 <a href="https://yandex.kz/maps/ru?utm_medium=mapframe&utm_source=maps" style={{color:'#eee', fontSize:'12px', position:'absolute', top:'0px'}}>Яндекс Карты</a>
                 <a href="https://yandex.kz/maps/ru/?ll=75.682352%2C44.413806&mode=routes&rtext=43.237163%2C76.945654~45.567028%2C74.249667&rtn=1&rtt=auto&ruri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzE2ODMwMhIg0prQsNC30LDSm9GB0YLQsNC9LCDQkNC70LzQsNGC0YsiCg0t5JlCFdvyLEI%2C~&utm_medium=mapframe&utm_source=maps&z=8.32" style={{color:'#eee', fontSize:'12px', position:'absolute', top:'14px'}}>Яндекс Карты</a><iframe src="https://yandex.kz/map-widget/v1/?ll=75.682352%2C44.413806&mode=routes&rtext=43.237163%2C76.945654~45.567028%2C74.249667&rtn=1&rtt=auto&ruri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzE2ODMwMhIg0prQsNC30LDSm9GB0YLQsNC9LCDQkNC70LzQsNGC0YsiCg0t5JlCFdvyLEI%2C~&z=8.32" width="100%" height="400" style={{position:'relative'}}></iframe></div>}
-        </div>
+        </>
     )
 }
 

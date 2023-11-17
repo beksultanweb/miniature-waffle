@@ -11,7 +11,7 @@ const services = await fetchApi<Service[]>({
 ---
 
 <Layout title="Jeyran Balkhash">
-    <h1 class="text-center text-64 uppercase font-medium">Услуги</h1>
+    <h1 class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10">Услуги</h1>
     {services.map(service =>
         <ServiceContainer service={service} />
     )}

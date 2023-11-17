@@ -1,32 +1,29 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import MediaContainer from '../../components/MediaContainer.astro';
-import Team from '../../components/Team.astro';
 import fetchApi from '../../api/strapi';
-import type Service from '../../interfaces/service';
 import Paragraph from '../../components/blocks/Paragraph.astro';
 import TextContainer from '../../components/TextContainer.astro';
 import Map from '../../components/Map.tsx';
 import Heading from '../../components/blocks/Heading.astro';
 import List from '../../components/blocks/List.astro';
+import type Contacts from '../../interfaces/contacts';
+import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks';
 
-const contacts = await fetchApi<Service[]>({
+const contacts = await fetchApi<Contacts>({
   endpoint: 'contacts-page?populate=*',
   wrappedByKey: 'data',
 });
-
-// console.log(contacts)
 
 const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
 ---
 
 <Layout title="Jeyran Balkhash">
-    <h1 class="text-center text-64 uppercase font-medium"">Контакты</h1>
-    <p class="text-center text-28 leading-130% mt-6 font-normal">Зона отдыха «JEYRAN & FISHING LODGE»,</p>
-    <p class="text-center text-28 leading-130% mt-6 font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Бронь</span></p>
-    <p class="text-center text-28 leading-130% font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Ресепшн</span></p>
-    <p class="text-center text-28 leading-130% mt-6 font-normal text-main">{contacts.attributes.email}</p>
-    <div class="flex justify-center mt-6 gap-5">
+    <h1 class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10">Контакты</h1>
+    <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal">Зона отдыха «JEYRAN & FISHING LODGE»,</p>
+    <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Бронь</span></p>
+    <p class="text-center text-base sm:text-28 leading-130% font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Ресепшн</span></p>
+    <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal text-main">{contacts.attributes.email}</p>
+    <div class="flex justify-center mt-4 sm:mt-6 gap-5">
         <a href={contacts.attributes.instagram} class="text-main">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3334 7.9165C11.8968 7.9165 10.519 8.48719 9.50319 9.50301C8.48737 10.5188 7.91669 11.8966 7.91669 13.3332V26.6665C7.91669 28.1031 8.48737 29.4808 9.50319 30.4967C10.519 31.5125 11.8968 32.0832 13.3334 32.0832H26.6667C28.1033 32.0832 29.481 31.5125 30.4968 30.4967C31.5127 29.4808 32.0834 28.1031 32.0834 26.6665V13.3332C32.0834 11.8966 31.5127 10.5188 30.4968 9.50301C29.481 8.48719 28.1033 7.9165 26.6667 7.9165H13.3334ZM7.73542 7.73524C9.22009 6.25058 11.2337 5.4165 13.3334 5.4165H26.6667C28.7663 5.4165 30.78 6.25058 32.2646 7.73524C33.7493 9.2199 34.5834 11.2335 34.5834 13.3332V26.6665C34.5834 28.7661 33.7493 30.7798 32.2646 32.2644C30.78 33.7491 28.7663 34.5832 26.6667 34.5832H13.3334C11.2337 34.5832 9.22009 33.7491 7.73542 32.2644C6.25076 30.7798 5.41669 28.7661 5.41669 26.6665V13.3332C5.41669 11.2335 6.25076 9.2199 7.73542 7.73524ZM27.5 11.2498C28.1904 11.2498 28.75 11.8095 28.75 12.4998V12.5165C28.75 13.2069 28.1904 13.7665 27.5 13.7665C26.8097 13.7665 26.25 13.2069 26.25 12.5165V12.4998C26.25 11.8095 26.8097 11.2498 27.5 11.2498ZM15.5806 15.5804C16.7527 14.4083 18.3424 13.7498 20 13.7498C21.6576 13.7498 23.2473 14.4083 24.4194 15.5804C25.5915 16.7525 26.25 18.3422 26.25 19.9998C26.25 21.6574 25.5915 23.2472 24.4194 24.4193C23.2473 25.5914 21.6576 26.2498 20 26.2498C18.3424 26.2498 16.7527 25.5914 15.5806 24.4193C14.4085 23.2472 13.75 21.6574 13.75 19.9998C13.75 18.3422 14.4085 16.7525 15.5806 15.5804ZM20 16.2498C19.0055 16.2498 18.0516 16.6449 17.3484 17.3482C16.6451 18.0514 16.25 19.0053 16.25 19.9998C16.25 20.9944 16.6451 21.9482 17.3484 22.6515C18.0516 23.3547 19.0055 23.7498 20 23.7498C20.9946 23.7498 21.9484 23.3547 22.6517 22.6515C23.3549 21.9482 23.75 20.9944 23.75 19.9998C23.75 19.0053 23.3549 18.0514 22.6517 17.3482C21.9484 16.6449 20.9946 16.2498 20 16.2498Z" fill="currentColor"/>
@@ -54,8 +51,8 @@ const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
         p="село Караозек в Балхашском районе Алматинской области Республики Казахстан. Входит в состав Куйганского сельского округа. Южное прибалхашье, дельта реки Или."
         coords={coordinatesString}
     />
-    <Map client:load />
-    <div class="w-800 mx-auto">
+    <Map client:idle />
+    <div>
         {contacts.attributes.how_to_get_there.map((block: DescriptionBlocks) => {
             switch(block.type) {
               case 'heading':
