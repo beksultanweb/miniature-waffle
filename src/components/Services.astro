@@ -10,9 +10,9 @@ interface Props {
 const { title, cards } = Astro.props;
 ---
 
-<section class="container pl-5 mx-auto pt-50 sm:pt-100">
+<section class="md:container pl-5 mx-auto pt-50 sm:pt-100">
     <h2 class="text-center text-32 sm:text-64 uppercase font-medium">{title}</h2>
-    <div class="mobile-slider flex overflow-auto scroll-smooth sm:grid grid-cols-3 gap-x-8 gap-y-6">
+    <div class="mobile-slider flex overflow-auto scroll-smooth md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
         {cards.map(card => 
             <ServiceCard title={card.attributes.Title} img={card.attributes.Thumbnail.data.attributes.url} />
         )}

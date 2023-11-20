@@ -1,5 +1,6 @@
 import type Advantage from "./advantages"
 import type { DescriptionBlocks } from "./descriptionBlocks"
+import type Slide from "./slide"
 
 export default interface Room {
     id: number
@@ -9,11 +10,7 @@ export default interface Room {
         pricePerDay: string
         slug: string
         media: {
-            data: {
-                attributes: {
-                    url: string
-                }
-            }[]
+            data: Slide[]
         }
         main_description: DescriptionBlocks[]
         description_2: DescriptionBlocks[]

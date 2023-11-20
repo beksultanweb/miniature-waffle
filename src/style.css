@@ -23,6 +23,7 @@
     background-color: #fff;
     opacity: 1;
     cursor: pointer;
+    pointer-events: all;
 }
 
 .dot-active {

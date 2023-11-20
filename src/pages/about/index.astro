@@ -19,10 +19,7 @@ const image = {
     url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',
     mime: 'image/jpeg'
 }
-const heading = [{
-    type: 'text',
-    text: 'жемчужина Семиречья'
-}]
+
 const paragraph = [{
     type: 'text',
     text: 'В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья.'
@@ -77,7 +74,7 @@ const aboutAdv = await fetchApi<any>({
         })}
     </div>
     <MainSlider slides={about.attributes.slider.data} client:visible />
-    <div class="container py-50 sm:py-100 mx-auto px-5 grid sm:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-10">
+    <div class="container py-50 sm:py-100 mx-auto px-5 grid md:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-10">
       {aboutAdv.map((enj: any) =>
       <AboutCard img={enj.attributes.image.data.attributes.url} title={enj.attributes.title} />)}
     </div>

@@ -41,7 +41,7 @@ const image = {
         }
     })}
     </div>
-    <div class="container mx-auto grid sm:grid-cols-3 py-50 sm:py-100 gap-x-8 gap-y-8 sm:gap-y-60">
+    <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 py-50 sm:py-100 gap-x-8 gap-y-8 sm:gap-y-60">
         {team.map(t => 
             <Team img={t.attributes.photo.data.attributes} name={t.attributes.name} position={t.attributes.position} />
         )}

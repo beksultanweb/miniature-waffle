@@ -5,7 +5,7 @@ import type Room from '../interfaces/room';
 
 interface Props {
     title: string,
-	cards: Boat[] | Room[],
+	cards: (Boat | Room)[],
     withH1?: boolean,
     wide?: boolean
 }
@@ -16,19 +16,24 @@ const { title, cards, withH1, wide } = Astro.props;
 <>
     {withH1 ? <h1 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{title}</h1>
     : <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{title}</h2>}
-    <div class={`grid container mx-auto px-5 gap-x-8 gap-y-6 sm:gap-y-10 grid-cols-1 ${wide?'md:grid-cols-3':'md:grid-cols-2'}`}>
+    <div class={`grid container mx-auto px-5 gap-x-8 gap-y-6 sm:gap-y-10 grid-cols-1 ${wide?'lg:grid-cols-2 xl:grid-cols-3':'lg:grid-cols-2'}`}>
         {cards.map(card => 
+        'pricePerDay' in card.attributes ? (
             <Card
                 title={card.attributes.title}
                 slug={card.attributes.slug}
                 media={card.attributes.media.data}
-                country={card.attributes.country_produced}
-                yearRelease={card.attributes.year_produced}
-                engine={card.attributes.engine}
                 pricePerDay={card.attributes.pricePerDay}
                 descr={card.attributes.description}
                 wide={wide}
-            />
+            />) : 
+            (<Card
+                title={card.attributes.title}
+                media={card.attributes.media.data}
+                country={card.attributes.country_produced}
+                yearRelease={card.attributes.year_produced}
+                engine={card.attributes.engine}
+            />)
         )}
     </div>
 </>

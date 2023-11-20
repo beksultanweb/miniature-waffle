@@ -16,16 +16,16 @@ interface Props {
 const { media, title, slug, descr, country, yearRelease, engine, pricePerDay, wide } = Astro.props;
 ---
 
-<a href={`/rooms/${slug}`} class={`w-full ${wide?'sm:w-384':'sm:w-592'}${engine ? ' pointer-events-none' : ''}`}>
+<a href={`${slug ? `/rooms/${slug}` : ''}`} class={`w-full ${wide?'lg:w-384':'lg:w-full'}${engine ? ' pointer-events-none' : ''}`}>
     <div class="relative">
-        <svg class="hidden sm:block absolute -top-1 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="19" viewBox="0 0 592 19" fill="none">
+        <svg class="hidden sm:block absolute -top-1 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="19" viewBox="0 0 592 19" fill="none" preserveAspectRatio="none">
             <path d="M592 9.34164C586.745 10.1477 581.71 11.1369 576.271 12.2057L575.72 12.3139L574.966 12.4579C558.949 15.5167 540.708 19 512 19C482.408 19 464.48 15.4898 448.28 12.3139C434.24 9.3888 423.44 7.29941 404 7.29941C385.981 7.29941 374.715 9.45089 361.441 11.9856C360.871 12.0944 360.298 12.2039 359.72 12.3139C359.158 12.4211 358.595 12.529 358.029 12.6372C342.277 15.6511 324.775 19 296 19C266.383 19 248.707 15.5346 232.591 12.3749L232.28 12.3139C218.24 9.3888 207.008 7.29941 188 7.29941C169.241 7.29941 158.056 9.49722 144.27 12.2058L143.72 12.3139L142.966 12.458C126.949 15.5167 108.708 19 80 19C50.408 19 32.4799 15.4898 16.2799 12.3139C10.5844 11.1273 5.42216 10.0783 0 9.25039V0H592V9.34164Z" fill="white"/>
         </svg>
         <svg class="block sm:hidden absolute top-0 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">
             <path d="M384 19.1373C367.684 17.8999 355.563 15.5259 344.28 13.3139C330.24 10.3888 319.44 8.29941 300 8.29941C281.981 8.29941 270.714 10.4509 257.441 12.9856L254.029 13.6372C238.277 16.6511 220.775 20 192 20C162.383 20 144.707 16.5346 128.591 13.3749L128.28 13.3139C114.24 10.3888 103.008 8.29941 84 8.29941C65.2411 8.29941 54.0555 10.4972 40.2703 13.2058L39.72 13.3139L38.9656 13.458C27.9309 15.5652 15.8411 17.874 0 19.1065V0H384V19.1373Z" fill="white"/>
         </svg>
         <Slider slides={media} client:idle wide={wide} />
-        <svg class="hidden sm:block absolute -bottom-1 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="19" viewBox="0 0 592 19" fill="none">
+        <svg class="hidden sm:block absolute -bottom-1 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="19" viewBox="0 0 592 19" fill="none" preserveAspectRatio="none">
             <path d="M592 9.65836C586.745 8.8523 581.71 7.86305 576.271 6.79427L575.72 6.68605L574.966 6.54206C558.949 3.48332 540.708 0 512 0C482.408 0 464.48 3.51018 448.28 6.68605C434.24 9.6112 423.44 11.7006 404 11.7006C385.981 11.7006 374.715 9.54911 361.441 7.01438C360.871 6.9056 360.298 6.79611 359.72 6.68605C359.158 6.57885 358.595 6.47105 358.029 6.36281C342.277 3.3489 324.775 0 296 0C266.383 0 248.707 3.46542 232.591 6.62507L232.28 6.68605C218.24 9.6112 207.008 11.7006 188 11.7006C169.241 11.7006 158.056 9.50278 144.27 6.79418L143.72 6.68605L142.966 6.54203C126.949 3.4833 108.708 0 80 0C50.408 0 32.4799 3.51018 16.2799 6.68605C10.5844 7.87267 5.42216 8.92175 0 9.74961V19H592V9.65836Z" fill="white"/>
         </svg>
         <svg class="block sm:hidden absolute bottom-0 z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">

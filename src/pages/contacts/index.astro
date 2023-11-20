@@ -52,7 +52,7 @@ const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
         coords={coordinatesString}
     />
     <Map client:idle />
-    <div>
+    <div class="pb-50 sm:pb-100">
         {contacts.attributes.how_to_get_there.map((block: DescriptionBlocks) => {
             switch(block.type) {
               case 'heading':
