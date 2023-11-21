@@ -24,7 +24,7 @@ return (
 				<ul className="hidden lg:flex items-center gap-6">
 					{navlinks.map(link => 
 						<li key={link.label} className={`${window.location.pathname.includes(link.path) ? 'text-main' : 'cursor-pointer'}`}>
-							<a className={`${window.location.pathname.includes(link.path) ? 'pointer-events-none' : 'cursor-pointer'}`} href={translatePath(link.path, lang)}>{t(`nav.${link.path}` as NavItemType)}</a>
+							<a className={`${window.location.pathname.includes(link.path) ? 'pointer-events-none' : 'cursor-pointer'}`} href={translatePath(`/${link.path}`, lang)}>{t(`nav.${link.path}` as NavItemType)}</a>
 						</li>
 					)}
 				</ul>
