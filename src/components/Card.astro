@@ -1,5 +1,6 @@
 ---
 import Slider from './Slider';
+import { numberWithSpaces } from '../utils/numberWithSpaces';
 
 interface Props {
 	media: any,
@@ -33,7 +34,7 @@ const { media, title, slug, descr, country, yearRelease, engine, pricePerDay, wi
         </svg>
     </div>
     <div class={`pt-3 text-2xl sm:text-32 leading-110% font-medium ${pricePerDay ? 'pb-2' :'pb-3 sm:pb-4'}`}>{title}</div>
-    {pricePerDay && <p class="text-2xl sm:text-32 font-medium leading-110%">{pricePerDay} ₸/сут</p>}
+    {pricePerDay && <p class="text-2xl sm:text-32 font-medium leading-110%">{numberWithSpaces(parseInt(pricePerDay))} ₸/сут</p>}
     {descr && <p class="text-base sm:text-lg pt-3 sm:pt-4 font-normal">{descr}</p>}
     {country && yearRelease && engine && 
     <div class="text-base sm:text-xl flex gap-x-3 gap-y-1 whitespace-nowrap flex-wrap font-medium">

@@ -11,19 +11,9 @@ import AboutCard from '../../components/AboutCard.astro';
 import MainSlider from '../../components/MainSlider';
 
 const about = await fetchApi<About>({
-  endpoint: 'about-page?populate=*',
+  endpoint: 'about-page?locale=en&populate=*',
   wrappedByKey: 'data',
 });
-
-const image = {
-    url: '/uploads/pexels_photo_6831129_f338937b17.jpeg',
-    mime: 'image/jpeg'
-}
-
-const paragraph = [{
-    type: 'text',
-    text: 'В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья.'
-}]
 
 const aboutAdv = await fetchApi<any>({
   endpoint: 'about-advantages?populate=*',
@@ -32,7 +22,7 @@ const aboutAdv = await fetchApi<any>({
 ---
 
 <Layout title="Jeyran Balkhash">
-    <MediaContainer media={image} title='JEYRAN & FISHING LODGE' />
+    <MediaContainer media={about.attributes.slot_a.data.attributes} title='JEYRAN & FISHING LODGE' />
     <div class="py-50 sm:py-100">
       {about.attributes.main_description.map((block: DescriptionBlocks) => {
           switch(block.type) {
@@ -45,11 +35,8 @@ const aboutAdv = await fetchApi<any>({
           }
       })}
   </div>
-    <MediaContainer media={image} big/>
+    <MediaContainer media={about.attributes.slot_b.data.attributes} big/>
     <div class="py-50 sm:py-100">
-        <Paragraph children={paragraph} />
-    </div>
-    <div class="pb-50 sm:pb-100">
         {about.attributes.description.map((block: DescriptionBlocks) => {
             switch(block.type) {
               case 'heading':
@@ -78,7 +65,7 @@ const aboutAdv = await fetchApi<any>({
       {aboutAdv.map((enj: any) =>
       <AboutCard img={enj.attributes.image.data.attributes.url} title={enj.attributes.title} />)}
     </div>
-    <MediaContainer media={image} />
+    <MediaContainer media={about.attributes.slot_c.data.attributes} />
     <div class="py-50 sm:py-100">
       {about.attributes.description_3.map((block: DescriptionBlocks) => {
           switch(block.type) {

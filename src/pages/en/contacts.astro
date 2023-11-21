@@ -1,25 +1,24 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import fetchApi from '../../api/strapi';
+import fetchApi from '../../api/strapi.ts';
 import Paragraph from '../../components/blocks/Paragraph.astro';
 import TextContainer from '../../components/TextContainer.astro';
 import Map from '../../components/Map.tsx';
 import Heading from '../../components/blocks/Heading.astro';
 import List from '../../components/blocks/List.astro';
-import type Contacts from '../../interfaces/contacts';
-import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks';
+import type Contacts from '../../interfaces/contacts.ts';
+import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks.ts';
 
 const contacts = await fetchApi<Contacts>({
-  endpoint: 'contacts-page?populate=*',
+  endpoint: 'contacts-page?locale=en&populate=*',
   wrappedByKey: 'data',
 });
-
 const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
 ---
 
 <Layout title="Jeyran Balkhash">
-    <h1 class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10">Контакты</h1>
-    <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal">Зона отдыха «JEYRAN & FISHING LODGE»,</p>
+    <h1 class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10">Contacts</h1>
+    <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal">Relaxation area «JEYRAN & FISHING LODGE»</p>
     <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Бронь</span></p>
     <p class="text-center text-base sm:text-28 leading-130% font-normal">{contacts.attributes.book_phone} <span class="text-gray-second">Ресепшн</span></p>
     <p class="text-center text-base sm:text-28 leading-130% mt-4 sm:mt-6 font-normal text-main">{contacts.attributes.email}</p>
@@ -47,8 +46,8 @@ const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
     </div>
 
     <TextContainer
-        title="Как нас найти"
-        p="село Караозек в Балхашском районе Алматинской области Республики Казахстан. Входит в состав Куйганского сельского округа. Южное прибалхашье, дельта реки Или."
+        title="How to find us"
+        p="The village of Karaozek in the Balkhash district of the Almaty region of the Republic of Kazakhstan. It is a part of the Kuigansky rural district. Southern Balkhash region, delta of the Ili River."
         coords={coordinatesString}
     />
     <Map client:idle />

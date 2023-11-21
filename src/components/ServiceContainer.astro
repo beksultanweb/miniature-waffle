@@ -4,6 +4,7 @@ import MainSlider from './MainSlider';
 import Heading from './blocks/Heading.astro';
 import Paragraph from './blocks/Paragraph.astro';
 import type { DescriptionBlocks } from '../interfaces/descriptionBlocks';
+import { numberWithSpaces } from '../utils/numberWithSpaces';
 
 const { service } = Astro.props
 ---
@@ -12,7 +13,7 @@ const { service } = Astro.props
     <MainSlider slides={service.attributes.slider.data} client:load />
     <div class="pt-5 sm:pt-10 pb-50 sm:pb-100 pt-10">
         <h2 class="text-center text-32 sm:text-64 uppercase font-medium">{service.attributes.Title}</h2>
-        {service.attributes.price && <p class="text-center text-32 sm:text-64 uppercase font-normal">от {service.attributes.price} ₸</p>}
+        {service.attributes.price && <p class="text-center text-32 sm:text-64 uppercase font-normal">от {numberWithSpaces(service.attributes.price)} ₸</p>}
         {service.attributes.description.map((block: DescriptionBlocks) => {
             switch(block.type) {
                 case 'heading':

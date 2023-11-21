@@ -40,5 +40,16 @@ export default interface Room {
                 }
             }[]
         }
+        slot_d: {
+            data: {
+                id: number,
+                attributes: {
+                    name: string
+                    alternativeText: string | null
+                    url: string
+                    mime: string
+                }
+            }[]
+        }
     }
 }

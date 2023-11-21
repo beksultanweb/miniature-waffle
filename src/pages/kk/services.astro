@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceContainer from '../../components/ServiceContainer.astro';
+import fetchApi from '../../api/strapi';
+import type Service from '../../interfaces/service';
+
+const services = await fetchApi<Service[]>({
+  endpoint: 'services?populate=*',
+  wrappedByKey: 'data',
+});
+---
+
+<Layout title="Jeyran Balkhash">
+    <h1 class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10">Услуги</h1>
+    {services.map(service =>
+        <ServiceContainer service={service} />
+    )}
+</Layout>

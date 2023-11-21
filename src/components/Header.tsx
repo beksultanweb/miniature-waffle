@@ -3,22 +3,28 @@ import LanguageDropDown from './LanguageDropDown'
 import MobileBurger from './MobileBurger'
 import useScrollDirection from '../hooks/useScrollDirection';
 import useScrollThreshold from '../hooks/useScrollThreshold';
+import { getLangFromUrl, useTranslatedPath, useTranslations } from '../i18n/utils';
+
+type NavItemType = "nav.rooms" | "nav.services" | "nav.about" | "nav.team" | "nav.contacts";
 
 const Header = () => {
 
+const lang = getLangFromUrl(new URL(window.location.href))
 
 const { scrollDirection } = useScrollDirection();
 const { isThresholdReached } = useScrollThreshold(100);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang)
 
 return (
 	<header className={`py-3 w-full bg-white relative ${scrollDirection === 'up' && isThresholdReached ? 'sticky top-0 z-50' : ''}`}>
 		<div className="flex justify-between text-xl font-medium container mx-auto px-5 sm:px-0">
 			<div className="flex">
-				<a href="/" className="mr-10"><img src="/logo.svg" alt="logo"/></a>
+				<a href={translatePath('/', lang)} className="mr-10"><img src="/logo.svg" alt="logo"/></a>
 				<ul className="hidden lg:flex items-center gap-6">
 					{navlinks.map(link => 
-						<li className={`${window.location.pathname.includes(link.path) ? 'text-main' : 'cursor-pointer'}`}>
-							<a className={`${window.location.pathname.includes(link.path) ? 'pointer-events-none' : 'cursor-pointer'}`} href={`/${link.path}`}>{link.label}</a>
+						<li key={link.label} className={`${window.location.pathname.includes(link.path) ? 'text-main' : 'cursor-pointer'}`}>
+							<a className={`${window.location.pathname.includes(link.path) ? 'pointer-events-none' : 'cursor-pointer'}`} href={translatePath(link.path, lang)}>{t(`nav.${link.path}` as NavItemType)}</a>
 						</li>
 					)}
 				</ul>

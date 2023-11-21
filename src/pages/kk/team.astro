@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MediaContainer from '../../components/MediaContainer.astro';
+import Teammate from '../../components/Teammate.astro';
+import fetchApi from '../../api/strapi';
+import Heading from '../../components/blocks/Heading.astro';
+import Paragraph from '../../components/blocks/Paragraph.astro';
+import List from '../../components/blocks/List.astro';
+import type TeamPage from '../../interfaces/teampage';
+import type TeamMate from '../../interfaces/team';
+import type { DescriptionBlocks } from '../../interfaces/descriptionBlocks';
+
+const team = await fetchApi<TeamMate[]>({
+  endpoint: 'teams?populate=*',
+  wrappedByKey: 'data',
+});
+
+const team_page = await fetchApi<TeamPage>({
+  endpoint: 'team-page?populate=*',
+  wrappedByKey: 'data',
+});
+---
+
+<Layout title="Jeyran Balkhash">
+    <MediaContainer media={team_page.attributes.slot_a.data.attributes} title='Команда JEYRAN & FISHING LODGE' />
+    <div class="pt-50 sm:pt-100">
+      {team_page.attributes.description.map((block: DescriptionBlocks) => {
+        switch(block.type) {
+          case 'heading':
+            return <Heading children={block.children} level={block.level} />
+          case 'paragraph':
+            return <Paragraph children={block.children} />
+          case 'list':
+            return <List children={block.children} />
+        }
+    })}
+    </div>
+    <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 py-50 sm:py-100 gap-x-8 gap-y-8 sm:gap-y-60">
+        {team.map(t => 
+            <Teammate img={t.attributes.photo.data.attributes} name={t.attributes.name} position={t.attributes.position} />
+        )}
+    </div>
+</Layout>

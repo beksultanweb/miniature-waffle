@@ -27,5 +27,32 @@ export default interface About {
                 }
             }[]
         }
+        slot_a: {
+            data: {
+                id: number
+                attributes: {
+                    url: string
+                    mime: string
+                }
+            }
+        }
+        slot_b: {
+            data: {
+                id: number
+                attributes: {
+                    url: string
+                    mime: string
+                }
+            }
+        }
+        slot_c: {
+            data: {
+                id: number
+                attributes: {
+                    url: string
+                    mime: string
+                }
+            }
+        }
     }
 }

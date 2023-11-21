@@ -17,7 +17,7 @@
     "@fontsource/finlandica": "^5.0.8",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
-    "astro": "^3.4.3",
+    "astro": "^3.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-remove-scroll": "^2.5.7",

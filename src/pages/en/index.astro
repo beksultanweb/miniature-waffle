@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TextContainer from '../components/TextContainer.astro';
-import MediaContainer from '../components/MediaContainer.astro';
-import Services from '../components/Services.astro';
-import List from '../components/List.astro';
-import Map from '../components/Map.tsx';
-import MainSlider from '../components/MainSlider';
-import fetchApi from '../api/strapi';
-import type Service from '../interfaces/service';
-import type Boat from '../interfaces/boat';
-import type mainSlider from '../interfaces/mainSlider';
-import type mainPage from '../interfaces/mainPage';
+import Layout from '../../layouts/Layout.astro';
+import TextContainer from '../../components/TextContainer.astro';
+import MediaContainer from '../../components/MediaContainer.astro';
+import Services from '../../components/Services.astro';
+import List from '../../components/List.astro';
+import Map from '../../components/Map.tsx';
+import MainSlider from '../../components/MainSlider';
+import fetchApi from '../../api/strapi';
+import type Service from '../../interfaces/service';
+import type Boat from '../../interfaces/boat';
+import type mainSlider from '../../interfaces/mainSlider';
+import type mainPage from '../../interfaces/mainPage';
 
 const main_page = await fetchApi<mainPage>({
   endpoint: 'main-page?populate=*',
