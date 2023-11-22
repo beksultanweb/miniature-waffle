@@ -30,7 +30,7 @@ const Slider = ({ slides, wide }: SlideProp) => {
         >
             {slides?.map((el, index) => 
                 <SwiperSlide key={index}>
-                    <img src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} className={`h-364 w-full ${wide?'sm:h-400':'sm:h-600'} object-cover`} alt='img' />
+                    <img src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`} className={`h-364 w-full ${wide?'sm:h-400':'sm:h-600'} object-cover`} alt='img' />
                 </SwiperSlide>
             )}
         </Swiper>

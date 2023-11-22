@@ -11,7 +11,7 @@ const { img, title } = Astro.props;
     <svg class="absolute z-10" xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">
         <path d="M384 19.1373C367.684 17.8999 355.563 15.5259 344.28 13.3139C330.24 10.3888 319.44 8.29941 300 8.29941C281.981 8.29941 270.714 10.4509 257.441 12.9856L254.029 13.6372C238.277 16.6511 220.775 20 192 20C162.383 20 144.707 16.5346 128.591 13.3749L128.28 13.3139C114.24 10.3888 103.008 8.29941 84 8.29941C65.2411 8.29941 54.0555 10.4972 40.2703 13.2058L39.72 13.3139L38.9656 13.458C27.9309 15.5652 15.8411 17.874 0 19.1065V0H384V19.1373Z" fill="white"/>
     </svg>
-    <img src={`${import.meta.env.STRAPI_URL}${img}`} class={`w-full object-cover ${title ? 'h-300' : 'h-full'}`} alt={title} />
+    <img src={`${import.meta.env.PUBLIC_STRAPI_URL}${img}`} class={`w-full object-cover ${title ? 'h-300' : 'h-full'}`} alt={title} />
     {title && <div class="px-4 pt-5 pb-8 bg-main text-white text-center text-2xl sm:text-32 font-semibold uppercase">{title}</div>}
     <svg class={`absolute ${title ? 'bottom-2' : 'bottom-0'} z-10`} xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 384 20" fill="none" preserveAspectRatio="none">
         <path d="M384 0.862656C367.684 2.10007 355.563 4.47414 344.28 6.68605C330.24 9.61119 319.44 11.7006 300 11.7006C281.981 11.7006 270.714 9.5491 257.441 7.01439L254.029 6.36279C238.277 3.34889 220.775 0 192 0C162.383 0 144.707 3.46542 128.591 6.62508L128.28 6.68605C114.24 9.61119 103.008 11.7006 84 11.7006C65.2411 11.7006 54.0555 9.50278 40.2703 6.79419L39.72 6.68605L38.9656 6.54202C27.9309 4.43475 15.8411 2.12598 0 0.893524V20H384V0.862656Z" fill="white"/>

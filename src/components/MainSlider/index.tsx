@@ -39,9 +39,9 @@ const MainSlider = ({ slides }: SlideProp) => {
 			>
 				{slides?.map((el, index) => 
 					<SwiperSlide key={index}>
-						{el.attributes.mime === 'video/mp4' && <video className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} autoPlay loop muted playsInline></video>}
-						{el.attributes.mime === 'image/jpeg' && <img className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} alt={el.attributes.alternativeText} />}
-						{el.attributes.mime === 'image/webp' && <img className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.STRAPI_URL}${el.attributes.url}`} alt={el.attributes.alternativeText} />}
+						{el.attributes.mime === 'video/mp4' && <video className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`} autoPlay loop muted playsInline></video>}
+						{el.attributes.mime === 'image/jpeg' && <img className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`} alt={el.attributes.alternativeText} />}
+						{el.attributes.mime === 'image/webp' && <img className='h-600 sm:h-800 object-cover w-full' src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`} alt={el.attributes.alternativeText} />}
 					</SwiperSlide>
 				)}
 			</Swiper>
