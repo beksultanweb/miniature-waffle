@@ -22,7 +22,7 @@ const { img, title } = Astro.props;
       fill="white"></path>
   </svg>
   <img
-    src={`${import.meta.env.PUBLIC_STRAPI_URL}${img}`}
+    src={`${import.meta.env.PUBLIC_STRAPI_URL}${img}?format=webp&resize=384x400`}
     class={`w-full object-cover ${title ? "h-300" : "h-full"}`}
     alt={title}
   />

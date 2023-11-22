@@ -155,6 +155,7 @@ const Map = () => {
           </a>
           <iframe
             src="https://yandex.kz/map-widget/v1/?ll=75.511565%2C44.393889&mode=routes&rtext=43.237163%2C76.945654~45.567028%2C74.249667&rtt=auto&ruri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzE2ODMwMhIg0prQsNC30LDSm9GB0YLQsNC9LCDQkNC70LzQsNGC0YsiCg0t5JlCFdvyLEI%2C~&z=8.19"
+            title="Yandex map"
             width="100%"
             height="400"
             style={{ position: "relative" }}
@@ -187,6 +188,7 @@ const Map = () => {
           </a>
           <iframe
             src="https://yandex.kz/map-widget/v1/?ll=75.682352%2C44.413806&mode=routes&rtext=43.237163%2C76.945654~45.567028%2C74.249667&rtn=1&rtt=auto&ruri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzE2ODMwMhIg0prQsNC30LDSm9GB0YLQsNC9LCDQkNC70LzQsNGC0YsiCg0t5JlCFdvyLEI%2C~&z=8.32"
+            title="Yandex map"
             width="100%"
             height="400"
             style={{ position: "relative" }}

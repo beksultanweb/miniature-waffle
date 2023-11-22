@@ -37,7 +37,7 @@ const Header = () => {
       <div className="flex justify-between text-xl font-medium container mx-auto px-5 sm:px-0">
         <div className="flex">
           <a href={translatePath("/")} className="mr-10">
-            <img src="/logo.svg" alt="logo" />
+            <img src="/logo.svg" width="64" height="56" alt="logo" />
           </a>
           <ul className="hidden lg:flex items-center gap-6">
             {navlinks.map((link) => (

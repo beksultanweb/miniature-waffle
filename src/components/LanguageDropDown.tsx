@@ -13,7 +13,7 @@ const LanguageDropDown = () => {
   return (
     <div className="relative" onClick={toggle}>
       <div className="flex gap-1 cursor-pointer">
-        <img src="/arrow-down.svg" alt="arrow" />
+        <img src="/arrow-down.svg" width="20" height="28" alt="arrow" />
         <span className="text-main">{languages[lang]}</span>
       </div>
       {open && (

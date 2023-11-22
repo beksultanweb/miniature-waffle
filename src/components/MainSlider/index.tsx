@@ -72,14 +72,14 @@ const MainSlider = ({ slides }: SlideProp) => {
             {el.attributes.mime === "image/jpeg" && (
               <img
                 className="h-600 sm:h-800 object-cover w-full"
-                src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`}
+                src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}?format=webp&resize=1700x766&embed`}
                 alt={el.attributes.alternativeText}
               />
             )}
             {el.attributes.mime === "image/webp" && (
               <img
                 className="h-600 sm:h-800 object-cover w-full"
-                src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`}
+                src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}?resize=1700x766&embed`}
                 alt={el.attributes.alternativeText}
               />
             )}

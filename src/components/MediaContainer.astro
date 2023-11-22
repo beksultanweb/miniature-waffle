@@ -53,7 +53,7 @@ const { media, title, big } = Astro.props;
   {
     media.mime === "image/jpeg" && (
       <img
-        src={`${import.meta.env.PUBLIC_STRAPI_URL}${media.url}`}
+        src={`${import.meta.env.PUBLIC_STRAPI_URL}${media.url}?format=webp&resize=1700x766&embed`}
         class="h-full w-full object-cover"
         alt="photo"
       />
