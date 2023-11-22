@@ -1,67 +1,68 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TextContainer from '../components/TextContainer.astro';
-import MediaContainer from '../components/MediaContainer.astro';
-import Services from '../components/Services.astro';
-import List from '../components/List.astro';
-import Map from '../components/Map.tsx';
-import MainSlider from '../components/MainSlider';
-import fetchApi from '../api/strapi';
-import type Service from '../interfaces/service';
-import type Boat from '../interfaces/boat';
-import type mainSlider from '../interfaces/mainSlider';
-import type mainPage from '../interfaces/mainPage';
+import fetchApi from "../api/strapi";
+
+import Layout from "../layouts/Layout.astro";
+import TextContainer from "../components/TextContainer.astro";
+import MediaContainer from "../components/MediaContainer.astro";
+import Services from "../components/Services.astro";
+import List from "../components/List.astro";
+import Map from "../components/Map.tsx";
+import MainSlider from "../components/MainSlider";
+
+import type Service from "../interfaces/service";
+import type Boat from "../interfaces/boat";
+import type mainSlider from "../interfaces/mainSlider";
+import type mainPage from "../interfaces/mainPage";
 
 const main_page = await fetchApi<mainPage>({
-  endpoint: 'main-page?populate=*',
-  wrappedByKey: 'data',
+  endpoint: "main-page?populate=*"
 });
 
 const services = await fetchApi<Service[]>({
-  endpoint: 'services?populate=*',
-  wrappedByKey: 'data',
+  endpoint: "services?populate=*"
 });
 
 const boats = await fetchApi<Boat[]>({
-  endpoint: 'boats?populate=*',
-  wrappedByKey: 'data',
+  endpoint: "boats?populate=*"
 });
 
 const slides = await fetchApi<mainSlider>({
-  endpoint: 'main-slider?populate=*',
-  wrappedByKey: 'data',
+  endpoint: "main-slider?populate=*"
 });
 
 const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
 ---
 
 <Layout title="Jeyran Balkhash">
-    <MainSlider slides={slides.attributes.media.data} client:load />
-    <TextContainer 
-        title="JEYRAN & FISHING LODGE" 
-        p="В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья."
-        withH1
-    />
-    <MediaContainer media={main_page.attributes.slot_a.data.attributes} big />
-    <Services cards={services} title="Наши услуги" />
-    <TextContainer
-        title="гармония с природой"
-        p="Река, разливаясь и разделяясь на несколько таких проток как Нарын, Жидели, Иир, Шубуркуна, Карабалта и Караозек, занимает огромное пространство общей площадью около 6500 квадратных километров и становится местом притяжения как заядлых Рыболовов, так и ценителей тихого, размеренного отдыха."
-    />
-    <MediaContainer media={main_page.attributes.slot_b.data.attributes} />
-    <TextContainer
-        title="Мы знаем лучшие места для рыбалки"
-        p="Организация, как групповой рыбалки, так и индивидуальной. Моторные лодки с гидами. Баня. Барбекю зона. Бассейн с подогревом. Прогулки по озеру."
-    />
-    <MediaContainer media={main_page.attributes.slot_c.data.attributes} />
-    <div class="py-50 sm:py-100">
-      <List cards={boats} title='парк моторных лодок и катеров' />
-    </div>
-    <MediaContainer media={main_page.attributes.slot_d.data.attributes} title="лучшие места для рыбалки" />
-    <TextContainer
-        title="Как нас найти"
-        p="село Караозек в Балхашском районе Алматинской области Республики Казахстан. Входит в состав Куйганского сельского округа. Южное прибалхашье, дельта реки Или."
-        coords={coordinatesString}
-    />
-    <Map client:load />
+  <MainSlider slides={slides.attributes.media.data} client:load />
+  <TextContainer
+    title="JEYRAN & FISHING LODGE"
+    p="В самом сердце Южного Прибалхашья, в Дельте реки Или расположился комплекс отдыха и рыбалки JEYRAN & FISHING LODGE - жемчужина одного из богатейших природных заповедников Семиречья."
+    withH1
+  />
+  <MediaContainer media={main_page.attributes.slot_a.data.attributes} big />
+  <Services cards={services} title="Наши услуги" />
+  <TextContainer
+    title="гармония с природой"
+    p="Река, разливаясь и разделяясь на несколько таких проток как Нарын, Жидели, Иир, Шубуркуна, Карабалта и Караозек, занимает огромное пространство общей площадью около 6500 квадратных километров и становится местом притяжения как заядлых Рыболовов, так и ценителей тихого, размеренного отдыха."
+  />
+  <MediaContainer media={main_page.attributes.slot_b.data.attributes} />
+  <TextContainer
+    title="Мы знаем лучшие места для рыбалки"
+    p="Организация, как групповой рыбалки, так и индивидуальной. Моторные лодки с гидами. Баня. Барбекю зона. Бассейн с подогревом. Прогулки по озеру."
+  />
+  <MediaContainer media={main_page.attributes.slot_c.data.attributes} />
+  <div class="py-50 sm:py-100">
+    <List cards={boats} title="парк моторных лодок и катеров" />
+  </div>
+  <MediaContainer
+    media={main_page.attributes.slot_d.data.attributes}
+    title="лучшие места для рыбалки"
+  />
+  <TextContainer
+    title="Как нас найти"
+    p="село Караозек в Балхашском районе Алматинской области Республики Казахстан. Входит в состав Куйганского сельского округа. Южное прибалхашье, дельта реки Или."
+    coords={coordinatesString}
+  />
+  <Map client:load />
 </Layout>

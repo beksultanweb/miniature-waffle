@@ -1,18 +1,24 @@
 ---
 interface Props {
   children: {
-    type: string
-    text: string
-    underline?: boolean
-    bold?: boolean
-  }[]
+    type: string;
+    text: string;
+    underline?: boolean;
+    bold?: boolean;
+  }[];
 }
 
 const { children } = Astro.props;
 ---
 
-{children.map(child => 
-    <p class={`container mx-auto px-5 text-base sm:text-28 leading-130% mt-4 sm:mt-6 ${child.underline ? 'text-main' : child.bold ? 'font-bold' : 'font-normal'}`}>
-        {child.text}
+{
+  children.map((child) => (
+    <p
+      class={`container mx-auto px-5 text-base sm:text-28 leading-130% mt-4 sm:mt-6 ${
+        child.underline ? "text-main" : child.bold ? "font-bold" : "font-normal"
+      }`}
+    >
+      {child.text}
     </p>
-)}
+  ))
+}

@@ -1,17 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import List from '../../components/List.astro';
-import fetchApi from '../../api/strapi';
-import type Room from '../../interfaces/room';
+import fetchApi from "../../api/strapi";
+
+import Layout from "../../layouts/Layout.astro";
+import List from "../../components/List.astro";
+
+import type Room from "../../interfaces/room";
 
 const rooms = await fetchApi<Room[]>({
-  endpoint: 'rooms?populate=*',
-  wrappedByKey: 'data',
+  endpoint: "rooms?populate=*"
 });
 ---
 
 <Layout title="Jeyran Balkhash">
   <div class="pt-5 sm:pt-10">
-    <List cards={rooms} title='номера' wide />
+    <List cards={rooms} title="номера" wide />
   </div>
 </Layout>

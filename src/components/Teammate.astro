@@ -1,26 +1,30 @@
 ---
 interface Props {
-    img: {
-        url: string
-        mime: string
-    },
-    name: string,
-    position: string
+  img: {
+    url: string;
+    mime: string;
+  };
+  name: string;
+  position: string;
 }
 
 const { img, name, position } = Astro.props;
 ---
 
 <div class="w-384">
-    <img src={`${import.meta.env.PUBLIC_STRAPI_URL}${img.url}`} class="team w-full h-384 object-cover" alt="photo">
-    <h2 class="text-32 leading-110% font-medium text-center">{name}</h2>
-    <p class="text-lg pt-3 font-normal text-center">{position}</p>
+  <img
+    src={`${import.meta.env.PUBLIC_STRAPI_URL}${img.url}`}
+    class="team w-full h-384 object-cover"
+    alt="photo"
+  />
+  <h2 class="text-32 leading-110% font-medium text-center">{name}</h2>
+  <p class="text-lg pt-3 font-normal text-center">{position}</p>
 </div>
 
 <style>
-    .team {
-        mask-image: url('team.svg');
-        mask-repeat: no-repeat;
-        mask-position: center;
-    }
+  .team {
+    mask-image: url("/team.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
 </style>

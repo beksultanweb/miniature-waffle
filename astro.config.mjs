@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
@@ -11,7 +11,7 @@ export default defineConfig({
     i18n: {
       defaultLocale: "ru",
       locales: ["en", "kk", "ru"],
-      routingStrategy: "prefix-other-locales"
-    }
-  }
+      routingStrategy: "prefix-other-locales",
+    },
+  },
 });

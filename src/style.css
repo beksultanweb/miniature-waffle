@@ -1,71 +1,71 @@
 .mobile-slider::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .custom-pagination {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 
-    padding: 20px;
-    border-radius: 100px;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(12.5px);
+  padding: 20px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12.5px);
 }
 
 /* dots */
 
 .dot {
-    display: block;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    background-color: #fff;
-    opacity: 1;
-    cursor: pointer;
-    pointer-events: all;
+  display: block;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .dot-active {
-    width: 60px;
-    border-radius: 100px;
-    background-color: #949494;
-    position: relative;
-    cursor: auto;
+  width: 60px;
+  border-radius: 100px;
+  background-color: #949494;
+  position: relative;
+  cursor: auto;
 }
 
 .dot-active::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background-color: #fff;
-    border-radius: 100px;
-    animation-duration: 5s;
-    animation-name: slidein;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #fff;
+  border-radius: 100px;
+  animation-duration: 5s;
+  animation-name: slidein;
 }
 
 @keyframes slidein {
-    from {
-        width: 10%;
-    }
-    to {
-        width: 100%;
-    }
+  from {
+    width: 10%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @media (max-width: 686px) {
-    .custom-pagination {
-        gap: 8px;
-        padding: 8px;
-    }
-    .dot {
-        width: 8px;
-        height: 8px;
-    }
-    .dot-active {
-        width: 40px;
-    }
+  .custom-pagination {
+    gap: 8px;
+    padding: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  .dot-active {
+    width: 40px;
+  }
 }

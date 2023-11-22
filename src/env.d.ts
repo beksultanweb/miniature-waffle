@@ -1,7 +1,7 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-    readonly PUBLIC_STRAPI_URL: string;
+  readonly PUBLIC_STRAPI_URL: string;
 }
 
-declare module 'strapi';
+declare module "strapi";

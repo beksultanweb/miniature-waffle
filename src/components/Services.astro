@@ -1,20 +1,28 @@
 ---
-import ServiceCard from './ServiceCard.astro';
-import type Service from '../interfaces/service';
+import ServiceCard from "./ServiceCard.astro";
+
+import type Service from "../interfaces/service";
 
 interface Props {
-    title: string,
-	cards: Service[]
+  title: string;
+  cards: Service[];
 }
 
 const { title, cards } = Astro.props;
 ---
 
 <section class="md:container pl-5 mx-auto pt-50 sm:pt-100">
-    <h2 class="text-center text-32 sm:text-64 uppercase font-medium">{title}</h2>
-    <div class="mobile-slider flex overflow-auto scroll-smooth md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-        {cards.map(card => 
-            <ServiceCard title={card.attributes.Title} img={card.attributes.Thumbnail.data.attributes.url} />
-        )}
-    </div>
+  <h2 class="text-center text-32 sm:text-64 uppercase font-medium">{title}</h2>
+  <div
+    class="mobile-slider flex overflow-auto scroll-smooth md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6"
+  >
+    {
+      cards.map((card) => (
+        <ServiceCard
+          title={card.attributes.Title}
+          img={card.attributes.Thumbnail.data.attributes.url}
+        />
+      ))
+    }
+  </div>
 </section>
