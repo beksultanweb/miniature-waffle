@@ -19,7 +19,7 @@ const media = {
 
 export async function getStaticPaths() {
   const rooms = await fetchApi<Room[]>({
-    endpoint: "rooms?populate=*"
+    endpoint: "rooms?populate=*",
   });
 
   return rooms.map((room) => ({

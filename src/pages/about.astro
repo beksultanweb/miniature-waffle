@@ -13,11 +13,11 @@ import type About from "../interfaces/about";
 import type { DescriptionBlocks } from "../interfaces/descriptionBlocks";
 
 const about = await fetchApi<About>({
-  endpoint: "about-page?populate=*"
+  endpoint: "about-page?populate=*",
 });
 
 const aboutAdv = await fetchApi<any>({
-  endpoint: "about-advantages?populate=*"
+  endpoint: "about-advantages?populate=*",
 });
 ---
 

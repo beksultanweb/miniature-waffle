@@ -27,17 +27,17 @@ export default async function fetchApi<T>({
 
   try {
     const res = await fetch(url.toString());
-  
+
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-  
+
     const data = await res.json();
 
     return data.data as T;
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error("Error:", error.message);
   }
-  
+
   return null as T;
 }

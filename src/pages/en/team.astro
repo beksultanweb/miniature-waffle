@@ -13,11 +13,11 @@ import type TeamMate from "../../interfaces/team";
 import type { DescriptionBlocks } from "../../interfaces/descriptionBlocks";
 
 const team = await fetchApi<TeamMate[]>({
-  endpoint: "teams?populate=*"
+  endpoint: "teams?populate=*",
 });
 
 const team_page = await fetchApi<TeamPage>({
-  endpoint: "team-page?populate=*"
+  endpoint: "team-page?populate=*",
 });
 ---
 

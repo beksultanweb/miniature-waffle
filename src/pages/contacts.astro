@@ -12,7 +12,7 @@ import type Contacts from "../interfaces/contacts.ts";
 import type { DescriptionBlocks } from "../interfaces/descriptionBlocks.ts";
 
 const contacts = await fetchApi<Contacts>({
-  endpoint: "contacts-page?populate=*"
+  endpoint: "contacts-page?populate=*",
 });
 const coordinatesString = "45°34'01.3\"N 74°14'58.8\"E";
 ---
