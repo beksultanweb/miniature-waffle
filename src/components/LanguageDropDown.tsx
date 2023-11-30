@@ -22,7 +22,11 @@ const LanguageDropDown = () => {
           {Object.entries(languages).map(([lang, label]) => (
             <a
               key={label}
-              href={`${defaultLang !== lang ? `/${lang}/${route ? route : ''}` : `/${route ? route : ''}`}`}
+              href={`${
+                defaultLang !== lang
+                  ? `/${lang}/${route ? route : ""}`
+                  : `/${route ? route : ""}`
+              }`}
               className="cursor-pointer uppercase"
             >
               {label}

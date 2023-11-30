@@ -37,97 +37,107 @@ const room = Astro.props;
 <Layout title={room.attributes.title}>
   <MainSlider slides={room.attributes.media.data} client:load />
   <h1
-      class="text-center text-32 sm:text-64 pt-60 sm:pt-100 uppercase font-medium"
-    >
-      {room.attributes.title}
+    class="text-center text-32 sm:text-64 pt-60 sm:pt-100 uppercase font-medium"
+  >
+    {room.attributes.title}
   </h1>
-  {room.attributes.Sections.map(section => {
-    if (section.__component === 'slider.slajder') {
-      return (
-        <MainSlider slides={section.media.data} client:load />
-      )
-    }
-    if (section.__component === 'text-container.tekstovyj') {
-      return (
-        <TextContainer
-          title={section.title}
-          p={section.subtitle}
-          withH1={section.h1}
-        />
-      )
-    }
-    if (section.__component === 'media-container.odinochnyj-media') {
-      return (
-        <MediaContainer media={section.media.data.attributes} big={section.big} title={section.title} />
-      )
-    }
-    if (section.__component === 'services.services') {
-      return (
-        <Services cards={section.services.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'about-advantages.about-advantages') {
-      return (
-        <Advantages advantages={section.about_advantages.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'boats.boats') {
-      return (
-        <List cards={section.boats.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'room.nomera') {
-      return (
-        <List cards={section.room.data} title={section.title} wide />
-      )
-    }
-    if (section.__component === 'team.komanda') {
-      return (
-        <>
-          <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{section.title}</h2>
-          <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 pb-60 sm:pb-100 gap-x-8 gap-y-8 sm:gap-y-60">
-            {section.team.data.map(t => 
-              <Teammate img={t.attributes.photo.data.attributes} name={t.attributes.name} position={t.attributes.position} />
-            )}
+  {
+    room.attributes.Sections.map((section) => {
+      if (section.__component === "slider.slajder") {
+        return <MainSlider slides={section.media.data} client:load />;
+      }
+      if (section.__component === "text-container.tekstovyj") {
+        return (
+          <TextContainer
+            title={section.title}
+            p={section.subtitle}
+            withH1={section.h1}
+          />
+        );
+      }
+      if (section.__component === "media-container.odinochnyj-media") {
+        return (
+          <MediaContainer
+            media={section.media.data.attributes}
+            big={section.big}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "services.services") {
+        return <Services cards={section.services.data} title={section.title} />;
+      }
+      if (section.__component === "about-advantages.about-advantages") {
+        return (
+          <Advantages
+            advantages={section.about_advantages.data}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "boats.boats") {
+        return <List cards={section.boats.data} title={section.title} />;
+      }
+      if (section.__component === "room.nomera") {
+        return <List cards={section.room.data} title={section.title} wide />;
+      }
+      if (section.__component === "team.komanda") {
+        return (
+          <>
+            <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">
+              {section.title}
+            </h2>
+            <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 pb-60 sm:pb-100 gap-x-8 gap-y-8 sm:gap-y-60">
+              {section.team.data.map((t) => (
+                <Teammate
+                  img={t.attributes.photo.data.attributes}
+                  name={t.attributes.name}
+                  position={t.attributes.position}
+                />
+              ))}
+            </div>
+          </>
+        );
+      }
+      if (section.__component === "text-advantages.preimushhestva-tekstovye") {
+        return (
+          <div class="container mx-auto px-5 pb-60 sm:pb-100 grid sm:grid-cols-2 gap-x-8 gap-y-6">
+            {section.text_advantages.data.map((adv) => (
+              <TextAdvantage adv={adv} />
+            ))}
           </div>
-        </>
-      )
-    }
-    if (section.__component === 'text-advantages.preimushhestva-tekstovye') {
-      return (
-        <div class="container mx-auto px-5 pb-60 sm:pb-100 grid sm:grid-cols-2 gap-x-8 gap-y-6">
-          {section.text_advantages.data.map(adv =>  
-            <TextAdvantage adv={adv} />
-          )}
-        </div>
-      )
-    }
-    if (section.__component === 'slider-columns.shahmatka') {
-      return (
-        <Container addedClass="px-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-          {section.media.data.map(img => 
-            <ServiceCard img={img.attributes.url} />
-          )}
-        </Container>
-      )
-    }
-    if (section.__component === 'text-editor.text-editor') {
-      return (
-        <Container disablePaddingBottom={section.disablePaddingBottom} disablePaddingTop={section.disablePaddingTop}>
-          {
-            section.text_blocks.map((block: DescriptionBlocks) => {
+        );
+      }
+      if (section.__component === "slider-columns.shahmatka") {
+        return (
+          <Container addedClass="px-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {section.media.data.map((img) => (
+              <ServiceCard img={img.attributes.url} />
+            ))}
+          </Container>
+        );
+      }
+      if (section.__component === "text-editor.text-editor") {
+        return (
+          <Container
+            disablePaddingBottom={section.disablePaddingBottom}
+            disablePaddingTop={section.disablePaddingTop}
+          >
+            {section.text_blocks.map((block: DescriptionBlocks) => {
               switch (block.type) {
                 case "heading":
-                  return <Heading children={block.children} level={block.level} />;
+                  return (
+                    <Heading children={block.children} level={block.level} />
+                  );
                 case "paragraph":
                   return <Paragraph children={block.children} />;
                 case "list":
                   return <ListItem children={block.children} />;
               }
-            })
-          }
-        </Container>
-      )
-    }
-  })}
+            })}
+          </Container>
+        );
+      }
+    })
+  }
 </Layout>

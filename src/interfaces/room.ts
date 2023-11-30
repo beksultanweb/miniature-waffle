@@ -1,5 +1,3 @@
-import type Advantage from "./advantages";
-import type { DescriptionBlocks } from "./descriptionBlocks";
 import type Image from "./image";
 
 export default interface Room {

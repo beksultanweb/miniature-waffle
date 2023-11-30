@@ -67,7 +67,7 @@ const Header = () => {
           <LanguageDropDown />
           <MobileBurger />
           <button className="fixed bottom-7 left-1/2 z-40 -translate-x-1/2 sm:translate-x-0 sm:static rounded-xl py-4 px-5 text-white bg-main">
-            {t('nav.book')}
+            {t("nav.book")}
           </button>
         </div>
       </div>

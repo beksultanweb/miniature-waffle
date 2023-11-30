@@ -30,7 +30,7 @@ export const ui = {
     "form.phone_placeholder": "Phone number",
     "form.back_call": "Back call",
     "card.day": "₸ per day",
-    "card.from": "from"
+    "card.from": "from",
   },
   ru: {
     "nav.rooms": "Номера",
@@ -54,7 +54,7 @@ export const ui = {
     "form.phone_placeholder": "Номер телефона",
     "form.back_call": "Обратный звонок",
     "card.day": "₸/сутки",
-    "card.from": "от"
+    "card.from": "от",
   },
   kk: {
     "nav.rooms": "Бөлмелер",
@@ -78,6 +78,6 @@ export const ui = {
     "form.phone_placeholder": "Телефон нөміріңіз",
     "form.back_call": "Кері қоңырау",
     "card.day": "₸/тәулік",
-    "card.from": "бастап"
+    "card.from": "бастап",
   },
 } as const;

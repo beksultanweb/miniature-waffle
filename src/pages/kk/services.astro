@@ -19,7 +19,7 @@ const services = await fetchApi<Service[]>({
   <h1
     class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10"
   >
-    {t('nav.services')}
+    {t("nav.services")}
   </h1>
   {services.map((service) => <ServiceContainer service={service} />)}
 </Layout>

@@ -27,78 +27,85 @@ const contacts = await fetchApi<Contacts>({
 ---
 
 <Layout title="Jeyran Balkhash">
-  {main_page.attributes.Sections.map(section => {
-    if (section.__component === 'slider.slajder') {
-      return (
-        <MainSlider slides={section.media.data} client:load />
-      )
-    }
-    if (section.__component === 'text-container.tekstovyj') {
-      return (
-        <TextContainer
-          title={section.title}
-          p={section.subtitle}
-          withH1={section.h1}
-        />
-      )
-    }
-    if (section.__component === 'media-container.odinochnyj-media') {
-      return (
-        <MediaContainer media={section.media.data.attributes} big={section.big} title={section.title} />
-      )
-    }
-    if (section.__component === 'services.services') {
-      return (
-        <Services cards={section.services.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'about-advantages.about-advantages') {
-      return (
-        <Advantages advantages={section.about_advantages.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'boats.boats') {
-      return (
-        <List cards={section.boats.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'room.nomera') {
-      return (
-        <List cards={section.room.data} title={section.title} wide />
-      )
-    }
-    if (section.__component === 'team.komanda') {
-      return (
-        <>
-          <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{section.title}</h2>
-          <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 pb-60 sm:pb-100 gap-x-8 gap-y-8 sm:gap-y-60">
-            {section.team.data.map(t => 
-              <Teammate img={t.attributes.photo.data.attributes} name={t.attributes.name} position={t.attributes.position} />
-            )}
-          </div>
-        </>
-      )
-    }
-    if (section.__component === 'text-advantages.preimushhestva-tekstovye') {
-      return (
-        <Container addedClass="px-5 grid sm:grid-cols-2 gap-x-8 gap-y-6">
-          {section.text_advantages.data.map(adv =>  
-            <TextAdvantage adv={adv} />
-          )}
-        </Container>
-      )
-    }
-    if (section.__component === 'slider-columns.shahmatka') {
-      return (
-        <Container addedClass="px-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-          {section.media.data.map(img => 
-            <ServiceCard img={img.attributes.url} />
-          )}
-        </Container>
-      )
-    }
-  })}
-  
+  {
+    main_page.attributes.Sections.map((section) => {
+      if (section.__component === "slider.slajder") {
+        return <MainSlider slides={section.media.data} client:load />;
+      }
+      if (section.__component === "text-container.tekstovyj") {
+        return (
+          <TextContainer
+            title={section.title}
+            p={section.subtitle}
+            withH1={section.h1}
+          />
+        );
+      }
+      if (section.__component === "media-container.odinochnyj-media") {
+        return (
+          <MediaContainer
+            media={section.media.data.attributes}
+            big={section.big}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "services.services") {
+        return <Services cards={section.services.data} title={section.title} />;
+      }
+      if (section.__component === "about-advantages.about-advantages") {
+        return (
+          <Advantages
+            advantages={section.about_advantages.data}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "boats.boats") {
+        return <List cards={section.boats.data} title={section.title} />;
+      }
+      if (section.__component === "room.nomera") {
+        return <List cards={section.room.data} title={section.title} wide />;
+      }
+      if (section.__component === "team.komanda") {
+        return (
+          <>
+            <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">
+              {section.title}
+            </h2>
+            <div class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 pb-60 sm:pb-100 gap-x-8 gap-y-8 sm:gap-y-60">
+              {section.team.data.map((t) => (
+                <Teammate
+                  img={t.attributes.photo.data.attributes}
+                  name={t.attributes.name}
+                  position={t.attributes.position}
+                />
+              ))}
+            </div>
+          </>
+        );
+      }
+      if (section.__component === "text-advantages.preimushhestva-tekstovye") {
+        return (
+          <Container addedClass="px-5 grid sm:grid-cols-2 gap-x-8 gap-y-6">
+            {section.text_advantages.data.map((adv) => (
+              <TextAdvantage adv={adv} />
+            ))}
+          </Container>
+        );
+      }
+      if (section.__component === "slider-columns.shahmatka") {
+        return (
+          <Container addedClass="px-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {section.media.data.map((img) => (
+              <ServiceCard img={img.attributes.url} />
+            ))}
+          </Container>
+        );
+      }
+    })
+  }
+
   <TextContainer
     title={contacts.attributes.how_to_get_there.title}
     p={contacts.attributes.how_to_get_there.subtitle}

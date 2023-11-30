@@ -35,19 +35,19 @@ export default interface Page {
       big: boolean;
       boats: {
         data: Boat[];
-      }
+      };
       text_blocks: DescriptionBlocks[];
       disablePaddingTop: boolean;
       disablePaddingBottom: boolean;
       room: {
         data: Room[];
-      }
+      };
       text_advantages: {
         data: Advantage[];
-      }
+      };
       team: {
         data: TeamMate[];
-      }
-    }[]
+      };
+    }[];
   };
 }

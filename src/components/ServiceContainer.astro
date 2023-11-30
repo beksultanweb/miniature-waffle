@@ -25,7 +25,9 @@ const { service } = Astro.props;
     {
       service.attributes.price && (
         <p class="text-center text-32 sm:text-64 uppercase font-normal">
-          {lang !== 'kk' && t('card.from')} {numberWithSpaces(service.attributes.price)} ₸ {lang === 'kk' && t('card.from')}
+          {lang !== "kk" && t("card.from")}{" "}
+          {numberWithSpaces(service.attributes.price)} ₸{" "}
+          {lang === "kk" && t("card.from")}
         </p>
       )
     }

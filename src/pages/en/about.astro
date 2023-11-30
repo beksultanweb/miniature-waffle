@@ -23,60 +23,65 @@ const about_page = await fetchApi<Page>({
 ---
 
 <Layout title="Jeyran Balkhash">
-  {about_page.attributes.Sections.map(section => {
-    if (section.__component === 'slider.slajder') {
-      return (
-        <MainSlider slides={section.media.data} client:load />
-      )
-    }
-    if (section.__component === 'text-editor.text-editor') {
-      return (
-        <Container>
-          {
-            section.text_blocks.map((block: DescriptionBlocks) => {
+  {
+    about_page.attributes.Sections.map((section) => {
+      if (section.__component === "slider.slajder") {
+        return <MainSlider slides={section.media.data} client:load />;
+      }
+      if (section.__component === "text-editor.text-editor") {
+        return (
+          <Container>
+            {section.text_blocks.map((block: DescriptionBlocks) => {
               switch (block.type) {
                 case "heading":
-                  return <Heading children={block.children} level={block.level} />;
+                  return (
+                    <Heading children={block.children} level={block.level} />
+                  );
                 case "paragraph":
                   return <Paragraph children={block.children} />;
                 case "list":
                   return <ListItem children={block.children} />;
               }
-            })
-          }
-        </Container>
-      )
-    }
-    if (section.__component === 'text-container.tekstovyj') {
-      return (
-        <TextContainer
-          title={section.title}
-          p={section.subtitle}
-          withH1={section.h1}
-        />
-      )
-    }
-    if (section.__component === 'media-container.odinochnyj-media') {
-      return (
-        <MediaContainer media={section.media.data.attributes} big={section.big} title={section.title} />
-      )
-    }
-    if (section.__component === 'services.services') {
-      return (
-        <Services cards={section.services.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'about-advantages.about-advantages') {
-      return (
-        <Advantages advantages={section.about_advantages.data} title={section.title} />
-      )
-    }
-    if (section.__component === 'boats.boats') {
-      return (
-        <Container>
-          <List cards={section.boats.data} title={section.title} />
-        </Container>
-      )
-    }
-  })}
+            })}
+          </Container>
+        );
+      }
+      if (section.__component === "text-container.tekstovyj") {
+        return (
+          <TextContainer
+            title={section.title}
+            p={section.subtitle}
+            withH1={section.h1}
+          />
+        );
+      }
+      if (section.__component === "media-container.odinochnyj-media") {
+        return (
+          <MediaContainer
+            media={section.media.data.attributes}
+            big={section.big}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "services.services") {
+        return <Services cards={section.services.data} title={section.title} />;
+      }
+      if (section.__component === "about-advantages.about-advantages") {
+        return (
+          <Advantages
+            advantages={section.about_advantages.data}
+            title={section.title}
+          />
+        );
+      }
+      if (section.__component === "boats.boats") {
+        return (
+          <Container>
+            <List cards={section.boats.data} title={section.title} />
+          </Container>
+        );
+      }
+    })
+  }
 </Layout>

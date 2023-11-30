@@ -1,13 +1,17 @@
 ---
 interface Props {
-    addedClass?: string;
-    disablePaddingTop?: boolean;
-    disablePaddingBottom?: boolean;
+  addedClass?: string;
+  disablePaddingTop?: boolean;
+  disablePaddingBottom?: boolean;
 }
 
 const { addedClass, disablePaddingTop, disablePaddingBottom } = Astro.props;
 ---
 
-<div class={`container mx-auto${' ' + addedClass}${disablePaddingTop ? ' pt-0' : ' pt-60 sm:pt-100'}${disablePaddingBottom ? ' pb-0' : ' pb-60 sm:pb-100'}`}>
-    <slot/>
+<div
+  class={`container mx-auto${" " + addedClass}${
+    disablePaddingTop ? " pt-0" : " pt-60 sm:pt-100"
+  }${disablePaddingBottom ? " pb-0" : " pb-60 sm:pb-100"}`}
+>
+  <slot />
 </div>

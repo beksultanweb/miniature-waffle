@@ -7,7 +7,7 @@ const useScrollThreshold = (boundary?: number) => {
 
   useEffect(() => {
     const updateScrollDirection = () => {
-      const scrollY = window.pageYOffset;
+      const scrollY = document.body.getBoundingClientRect().top * -1;
 
       if (boundary) {
         if (scrollY > boundary) {

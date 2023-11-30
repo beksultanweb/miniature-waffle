@@ -8,8 +8,8 @@ export function getLangFromUrl(url: URL) {
 
 export function getRouteFromUrl(url: URL) {
   const [, lang] = url.pathname.split("/");
-  if (lang in ui) return url.pathname.split("/").slice(2).join('/')
-  return url.pathname.split("/").slice(1).join('/');
+  if (lang in ui) return url.pathname.split("/").slice(2).join("/");
+  return url.pathname.split("/").slice(1).join("/");
 }
 
 export function useTranslations(lang: keyof typeof ui) {

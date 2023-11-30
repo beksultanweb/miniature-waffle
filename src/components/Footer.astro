@@ -54,18 +54,41 @@ const contacts = await fetchApi<Contacts>({
       </div>
       <a
         class="text-32 font-medium text-white block sm:inline-block text-center sm:text-left"
-        href={`tel: ${contacts.attributes.book_phone}`}>{contacts.attributes.book_phone}</a
+        href={`tel: ${contacts.attributes.book_phone}`}
+        >{contacts.attributes.book_phone}</a
       >
       <div class="flex justify-center sm:justify-start gap-5 mt-4">
         <a href={`${contacts.attributes.whatsapp}`}
-          ><img src="/tabler-icon-brand-whatsapp.svg" width="40" height="40" alt="whatsapp" /></a
+          ><img
+            src="/tabler-icon-brand-whatsapp.svg"
+            width="40"
+            height="40"
+            alt="whatsapp"
+          /></a
         >
         <a href={`${contacts.attributes.instagram}`}
-          ><img src="/tabler-icon-brand-instagram.svg" width="40" height="40" alt="instagram" /></a
+          ><img
+            src="/tabler-icon-brand-instagram.svg"
+            width="40"
+            height="40"
+            alt="instagram"
+          /></a
         >
-        <a href={`${contacts.attributes.twitter}`}><img src="/tabler-icon-brand-x.svg" width="40" height="40" alt="twitter" /></a>
+        <a href={`${contacts.attributes.twitter}`}
+          ><img
+            src="/tabler-icon-brand-x.svg"
+            width="40"
+            height="40"
+            alt="twitter"
+          /></a
+        >
         <a href={`${contacts.attributes.telegram}`}
-          ><img src="/tabler-icon-brand-telegram.svg" width="40" height="40" alt="telegram" /></a
+          ><img
+            src="/tabler-icon-brand-telegram.svg"
+            width="40"
+            height="40"
+            alt="telegram"
+          /></a
         >
       </div>
     </div>
@@ -73,6 +96,6 @@ const contacts = await fetchApi<Contacts>({
   </div>
   <a
     class="text-center text-white text-base w-full block mt-8 font-normal"
-    href="https://musan.digital">{t('footer.madeby')}</a
+    href="https://musan.digital">{t("footer.madeby")}</a
   >
 </footer>
