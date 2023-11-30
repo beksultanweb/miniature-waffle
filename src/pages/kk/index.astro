@@ -18,17 +18,17 @@ import type Contacts from "../../interfaces/contacts";
 import type Page from "../../interfaces/page.ts";
 
 const main_page = await fetchApi<Page>({
-  endpoint: "main-page?populate=deep",
+  endpoint: "main-page?populate=deep&locale=kk",
 });
 
 const contacts = await fetchApi<Contacts>({
-  endpoint: "contacts-page?populate=*",
+  endpoint: "contacts-page?populate=*&locale=kk",
 });
 ---
 
 <Layout title="Jeyran Balkhash">
   {
-    main_page.attributes.Sections.map((section) => {
+    main_page?.attributes.Sections.map((section) => {
       if (section.__component === "slider.slajder") {
         return <MainSlider slides={section.media.data} client:load />;
       }
