@@ -1,27 +1,31 @@
 ---
 import MainSlider from "./MainSlider";
 
-import List from "./blocks/List.astro";
+import List from "./blocks/ListItem.astro";
 import Heading from "./blocks/Heading.astro";
 import Paragraph from "./blocks/Paragraph.astro";
 
 import type { DescriptionBlocks } from "../interfaces/descriptionBlocks";
 
 import { numberWithSpaces } from "../utils/numberWithSpaces";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { service } = Astro.props;
 ---
 
 <div>
   <MainSlider slides={service.attributes.slider.data} client:load />
-  <div class="pt-5 sm:pt-10 pb-50 sm:pb-100">
+  <div class="pt-5 sm:pt-10 pb-60 sm:pb-100">
     <h2 class="text-center text-32 sm:text-64 uppercase font-medium">
       {service.attributes.Title}
     </h2>
     {
       service.attributes.price && (
         <p class="text-center text-32 sm:text-64 uppercase font-normal">
-          от {numberWithSpaces(service.attributes.price)} ₸
+          {lang !== 'kk' && t('card.from')} {numberWithSpaces(service.attributes.price)} ₸ {lang === 'kk' && t('card.from')}
         </p>
       )
     }

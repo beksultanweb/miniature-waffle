@@ -6,27 +6,23 @@ import MediaContainer from "../components/MediaContainer.astro";
 import Teammate from "../components/Teammate.astro";
 import Heading from "../components/blocks/Heading.astro";
 import Paragraph from "../components/blocks/Paragraph.astro";
-import List from "../components/blocks/List.astro";
+import ListItem from "../components/blocks/ListItem.astro";
 
 import type TeamPage from "../interfaces/teampage";
-import type TeamMate from "../interfaces/team";
 import type { DescriptionBlocks } from "../interfaces/descriptionBlocks";
 
-const team = await fetchApi<TeamMate[]>({
-  endpoint: "teams?populate=*",
-});
-
 const team_page = await fetchApi<TeamPage>({
-  endpoint: "team-page?populate=*",
+  endpoint: "team-page?populate=deep",
 });
 ---
 
 <Layout title="Jeyran Balkhash">
   <MediaContainer
-    media={team_page.attributes.slot_a.data.attributes}
-    title="Команда JEYRAN & FISHING LODGE"
+    media={team_page.attributes.top.media.data.attributes}
+    title={team_page.attributes.top.title}
+    big={team_page.attributes.top.big}
   />
-  <div class="pt-50 sm:pt-100">
+  <div class="pt-60 sm:pt-100">
     {
       team_page.attributes.description.map((block: DescriptionBlocks) => {
         switch (block.type) {
@@ -35,16 +31,16 @@ const team_page = await fetchApi<TeamPage>({
           case "paragraph":
             return <Paragraph children={block.children} />;
           case "list":
-            return <List children={block.children} />;
+            return <ListItem children={block.children} />;
         }
       })
     }
   </div>
   <div
-    class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 py-50 sm:py-100 gap-x-8 gap-y-8 sm:gap-y-60"
+    class="container mx-auto grid justify-center md:justify-between md:grid-cols-2 lg:grid-cols-3 py-60 sm:py-100 gap-x-8 gap-y-8 sm:gap-y-60"
   >
     {
-      team.map((t) => (
+      team_page.attributes.team.data.map((t) => (
         <Teammate
           img={t.attributes.photo.data.attributes}
           name={t.attributes.name}

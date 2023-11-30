@@ -1,5 +1,6 @@
+import type AboutAdvantage from "./aboutAdvantages";
 import type { DescriptionBlocks } from "./descriptionBlocks";
-import type Slide from "./slide";
+import type Image from "./image";
 
 export default interface About {
   id: number;
@@ -9,23 +10,10 @@ export default interface About {
     description_2: DescriptionBlocks[];
     description_3: DescriptionBlocks[];
     slider: {
-      data: Slide[];
+      data: Image[];
     };
     about_advantages: {
-      data: {
-        id: number;
-        attributes: {
-          title: string;
-          image: {
-            data: {
-              attributes: {
-                url: string;
-                mime: string;
-              };
-            };
-          };
-        };
-      }[];
+      data: AboutAdvantage[];
     };
     slot_a: {
       data: {

@@ -1,0 +1,29 @@
+---
+import AboutCard from './AboutCard.astro';
+import Container from './Container.astro';
+
+import type AboutAdvantage from '../interfaces/aboutAdvantages';
+
+interface Props {
+    advantages: AboutAdvantage[];
+    title?: string;
+}
+
+const { advantages, title } = Astro.props;
+---
+
+<Container>
+  {title && <h2 class="text-center text-32 px-5 sm:text-64 uppercase mb-6 font-medium">{title}</h2>}
+  <div
+      class="px-5 grid md:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-10"
+    >
+      {
+        advantages.map(adv => (
+          <AboutCard
+            img={adv.attributes.image.data.attributes.url}
+            title={adv.attributes.title}
+          />
+        ))
+      }
+  </div>
+</Container>

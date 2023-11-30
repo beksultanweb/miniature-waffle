@@ -10,6 +10,12 @@ export default interface Contacts {
     twitter: string;
     telegram: string;
     whatsapp: string;
-    how_to_get_there: DescriptionBlocks[];
+    how_to_get_there: {
+      id: number;
+      title: string;
+      subtitle: string;
+    }
+    how_to_get_there_article: DescriptionBlocks[];
+    coordinates: string;
   };
 }

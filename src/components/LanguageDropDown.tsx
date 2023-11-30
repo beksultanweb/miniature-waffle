@@ -1,12 +1,13 @@
 import { useState } from "react";
 
 import { defaultLang, languages } from "../i18n/ui";
-import { getLangFromUrl } from "../i18n/utils";
+import { getLangFromUrl, getRouteFromUrl } from "../i18n/utils";
 
 const LanguageDropDown = () => {
   const [open, setOpen] = useState(false);
 
   const lang = getLangFromUrl(new URL(window.location.href));
+  const route = getRouteFromUrl(new URL(window.location.href));
 
   const toggle = () => setOpen(!open);
 
@@ -21,7 +22,7 @@ const LanguageDropDown = () => {
           {Object.entries(languages).map(([lang, label]) => (
             <a
               key={label}
-              href={`${defaultLang !== lang ? `/${lang}/` : "/"}`}
+              href={`${defaultLang !== lang ? `/${lang}/${route ? route : ''}` : `/${route ? route : ''}`}`}
               className="cursor-pointer uppercase"
             >
               {label}

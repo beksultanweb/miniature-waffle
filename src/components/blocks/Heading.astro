@@ -14,19 +14,19 @@ const { children, level } = Astro.props;
   children.map((child) => {
     if (level === 1)
       return (
-        <h1 class="container mx-auto px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
+        <h1 class="px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
           {child.text}
         </h1>
       );
     if (level === 2)
       return (
-        <h2 class="container mx-auto px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
+        <h2 class="px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
           {child.text}
         </h2>
       );
     if (level === 3)
       return (
-        <h3 class="container mx-auto px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
+        <h3 class="px-5 text-center text-32 sm:text-64 leading-none uppercase font-medium">
           {child.text}
         </h3>
       );

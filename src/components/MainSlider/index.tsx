@@ -6,10 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "./style.css";
 
-import type Slide from "../../interfaces/slide";
+import type Image from "../../interfaces/image";
 
 interface SlideProp {
-  slides: Slide[];
+  slides: Image[];
   wide?: boolean;
 }
 
@@ -61,7 +61,7 @@ const MainSlider = ({ slides }: SlideProp) => {
           <SwiperSlide key={index}>
             {el.attributes.mime === "video/mp4" && (
               <video
-                className="h-600 sm:h-800 object-cover w-full"
+                className="h-600 sm:h-766 object-cover w-full"
                 src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}`}
                 autoPlay
                 loop
@@ -71,16 +71,16 @@ const MainSlider = ({ slides }: SlideProp) => {
             )}
             {el.attributes.mime === "image/jpeg" && (
               <img
-                className="h-600 sm:h-800 object-cover w-full"
+                className="h-600 sm:h-766 object-cover w-full"
                 src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}?format=webp&resize=1700x766&embed`}
-                alt={el.attributes.alternativeText}
+                alt={el.attributes.alternativeText ?? "img"}
               />
             )}
             {el.attributes.mime === "image/webp" && (
               <img
-                className="h-600 sm:h-800 object-cover w-full"
+                className="h-600 sm:h-766 object-cover w-full"
                 src={`${import.meta.env.PUBLIC_STRAPI_URL}${el.attributes.url}?resize=1700x766&embed`}
-                alt={el.attributes.alternativeText}
+                alt={el.attributes.alternativeText ?? "img"}
               />
             )}
           </SwiperSlide>

@@ -1,6 +1,10 @@
 import { useCallback, useState } from "react";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const Map = () => {
+  const lang = getLangFromUrl(new URL(window.location.href));
+  const t = useTranslations(lang);
+
   const [activeTab, setActiveTab] = useState(1);
 
   const handleClick = useCallback(
@@ -14,7 +18,7 @@ const Map = () => {
     <>
       <div className="px-5 sm:px-0 md:w-800 mx-auto my-5 sm:my-8">
         <h2 className="text-32 sm:text-64 text-center uppercase leading-100% mb-4 sm:mb-6 font-medium">
-          Как до нас добраться
+          {t('contacts.how_to')}
         </h2>
         <div className="flex mobile-slider overflow-auto whitespace-nowrap sm:justify-center gap-1 sm:gap-2">
           <button
@@ -37,7 +41,7 @@ const Map = () => {
                 fill="currentColor"
               />
             </svg>
-            Авто №1
+            {t('contacts.auto')} №1
           </button>
           <button
             className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${
@@ -59,7 +63,7 @@ const Map = () => {
                 fill="currentColor"
               />
             </svg>
-            Авто №1
+            {t('contacts.auto')} №1
           </button>
           <button
             className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${
@@ -81,7 +85,7 @@ const Map = () => {
                 fill="currentColor"
               />
             </svg>
-            Катер
+            {t('contacts.boat')}
           </button>
           <button
             className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${
@@ -103,7 +107,7 @@ const Map = () => {
                 fill="currentColor"
               />
             </svg>
-            Вертолет
+            {t('contacts.helicopter')}
           </button>
           <button
             className={`flex border border-solid border-gray py-3 pl-4 pr-5 rounded-xl gap-2 ${
@@ -125,7 +129,7 @@ const Map = () => {
                 fill="currentColor"
               />
             </svg>
-            Самолет
+            {t('contacts.plane')}
           </button>
         </div>
       </div>

@@ -5,14 +5,18 @@ import Layout from "../../../layouts/Layout.astro";
 import List from "../../../components/List.astro";
 
 import type Room from "../../../interfaces/room";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const rooms = await fetchApi<Room[]>({
-  endpoint: "rooms?populate=*",
+  endpoint: "rooms?populate=*&locale=en",
 });
 ---
 
 <Layout title="Jeyran Balkhash">
-  <div class="pt-5 sm:pt-10">
-    <List cards={rooms} title="номера" wide />
+  <div class="pt-5 sm:pt-10 pb-60 sm:pb-100">
+    <List cards={rooms} title={t('nav.rooms')} wide />
   </div>
 </Layout>

@@ -1,4 +1,6 @@
 ---
+import Container from './Container.astro';
+
 interface Props {
   title: string;
   p: string;
@@ -9,7 +11,7 @@ interface Props {
 const { title, p, withH1, coords } = Astro.props;
 ---
 
-<div class="px-5 md:px-0 md:w-800 mx-auto py-50 sm:py-100">
+<Container addedClass="px-5 md:px-0 md:w-800">
   {
     withH1 ? (
       <h1 class="text-32 sm:text-64 text-center uppercase leading-100% mb-4 sm:mb-6 font-medium">
@@ -24,9 +26,9 @@ const { title, p, withH1, coords } = Astro.props;
   <p class="text-base sm:text-28 text-center leading-130% font-normal">{p}</p>
   {
     coords && (
-      <p class="text-main text-base sm:text-28 text-center mt-2 font-normal">
+      <p class="text-main text-base sm:text-28 text-center mt-5 font-normal">
         {coords}
       </p>
     )
   }
-</div>
+</Container>

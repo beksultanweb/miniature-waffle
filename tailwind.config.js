@@ -9,7 +9,7 @@ export default {
         "gray-second": "#868686",
       },
       padding: {
-        50: "60px",
+        60: "60px",
         100: "100px",
       },
       fontSize: {
@@ -33,7 +33,7 @@ export default {
         400: "400px",
         600: "600px",
         616: "616px",
-        800: "766px",
+        766: "766px",
       },
       fontFamily: {
         sans: ["Finlandica"],

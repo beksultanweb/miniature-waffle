@@ -3,98 +3,80 @@ import fetchApi from "../../api/strapi";
 
 import Layout from "../../layouts/Layout.astro";
 import MediaContainer from "../../components/MediaContainer.astro";
+import TextContainer from "../../components/TextContainer.astro";
+import Services from "../../components/Services.astro";
 import Heading from "../../components/blocks/Heading.astro";
 import Paragraph from "../../components/blocks/Paragraph.astro";
-import List from "../../components/blocks/List.astro";
-import AboutCard from "../../components/AboutCard.astro";
+import ListItem from "../../components/blocks/ListItem.astro";
+import List from "../../components/List.astro";
 import MainSlider from "../../components/MainSlider";
+import Advantages from "../../components/Advantages.astro";
+import Container from "../../components/Container.astro";
 
 import type About from "../../interfaces/about";
 import type { DescriptionBlocks } from "../../interfaces/descriptionBlocks";
+import type Page from "../../interfaces/page";
 
-const about = await fetchApi<About>({
-  endpoint: "about-page?locale=en&populate=*",
-});
-
-const aboutAdv = await fetchApi<any>({
-  endpoint: "about-advantages?populate=*",
+const about_page = await fetchApi<Page>({
+  endpoint: "about-page?populate=deep&locale=en",
 });
 ---
 
 <Layout title="Jeyran Balkhash">
-  <MediaContainer
-    media={about.attributes.slot_a.data.attributes}
-    title="JEYRAN & FISHING LODGE"
-  />
-  <div class="py-50 sm:py-100">
-    {
-      about.attributes.main_description.map((block: DescriptionBlocks) => {
-        switch (block.type) {
-          case "heading":
-            return <Heading children={block.children} level={block.level} />;
-          case "paragraph":
-            return <Paragraph children={block.children} />;
-          case "list":
-            return <List children={block.children} />;
-        }
-      })
+  {about_page.attributes.Sections.map(section => {
+    if (section.__component === 'slider.slajder') {
+      return (
+        <MainSlider slides={section.media.data} client:load />
+      )
     }
-  </div>
-  <MediaContainer media={about.attributes.slot_b.data.attributes} big />
-  <div class="py-50 sm:py-100">
-    {
-      about.attributes.description.map((block: DescriptionBlocks) => {
-        switch (block.type) {
-          case "heading":
-            return <Heading children={block.children} level={block.level} />;
-          case "paragraph":
-            return <Paragraph children={block.children} />;
-          case "list":
-            return <List children={block.children} />;
-        }
-      })
+    if (section.__component === 'text-editor.text-editor') {
+      return (
+        <Container>
+          {
+            section.text_blocks.map((block: DescriptionBlocks) => {
+              switch (block.type) {
+                case "heading":
+                  return <Heading children={block.children} level={block.level} />;
+                case "paragraph":
+                  return <Paragraph children={block.children} />;
+                case "list":
+                  return <ListItem children={block.children} />;
+              }
+            })
+          }
+        </Container>
+      )
     }
-  </div>
-  <div class="pb-50 sm:pb-100">
-    {
-      about.attributes.description_2.map((block: DescriptionBlocks) => {
-        switch (block.type) {
-          case "heading":
-            return <Heading children={block.children} level={block.level} />;
-          case "paragraph":
-            return <Paragraph children={block.children} />;
-          case "list":
-            return <List children={block.children} />;
-        }
-      })
-    }
-  </div>
-  <MainSlider slides={about.attributes.slider.data} client:visible />
-  <div
-    class="container py-50 sm:py-100 mx-auto px-5 grid md:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-10"
-  >
-    {
-      aboutAdv.map((enj: any) => (
-        <AboutCard
-          img={enj.attributes.image.data.attributes.url}
-          title={enj.attributes.title}
+    if (section.__component === 'text-container.tekstovyj') {
+      return (
+        <TextContainer
+          title={section.title}
+          p={section.subtitle}
+          withH1={section.h1}
         />
-      ))
+      )
     }
-  </div>
-  <MediaContainer media={about.attributes.slot_c.data.attributes} />
-  <div class="py-50 sm:py-100">
-    {
-      about.attributes.description_3.map((block: DescriptionBlocks) => {
-        switch (block.type) {
-          case "heading":
-            return <Heading children={block.children} level={block.level} />;
-          case "paragraph":
-            return <Paragraph children={block.children} />;
-          case "list":
-            return <List children={block.children} />;
-        }
-      })
+    if (section.__component === 'media-container.odinochnyj-media') {
+      return (
+        <MediaContainer media={section.media.data.attributes} big={section.big} title={section.title} />
+      )
     }
-  </div>
+    if (section.__component === 'services.services') {
+      return (
+        <Services cards={section.services.data} title={section.title} />
+      )
+    }
+    if (section.__component === 'about-advantages.about-advantages') {
+      return (
+        <Advantages advantages={section.about_advantages.data} title={section.title} />
+      )
+    }
+    if (section.__component === 'boats.boats') {
+      return (
+        <Container>
+          <List cards={section.boats.data} title={section.title} />
+        </Container>
+      )
+    }
+  })}
 </Layout>

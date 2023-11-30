@@ -1,6 +1,6 @@
 import type Advantage from "./advantages";
 import type { DescriptionBlocks } from "./descriptionBlocks";
-import type Slide from "./slide";
+import type Image from "./image";
 
 export default interface Room {
   id: number;
@@ -10,46 +10,7 @@ export default interface Room {
     pricePerDay: string;
     slug: string;
     media: {
-      data: Slide[];
-    };
-    main_description: DescriptionBlocks[];
-    description_2: DescriptionBlocks[];
-    description_3: DescriptionBlocks[];
-    advantages: {
-      data: Advantage[];
-    };
-    slot_b: {
-      data: {
-        id: number;
-        attributes: {
-          name: string;
-          mime: string;
-          url: string;
-          alternativeText: string | null;
-        };
-      };
-    };
-    slot_c: {
-      data: {
-        id: number;
-        attributes: {
-          name: string;
-          alternativeText: string | null;
-          url: string;
-          mime: string;
-        };
-      }[];
-    };
-    slot_d: {
-      data: {
-        id: number;
-        attributes: {
-          name: string;
-          alternativeText: string | null;
-          url: string;
-          mime: string;
-        };
-      }[];
+      data: Image[];
     };
   };
 }

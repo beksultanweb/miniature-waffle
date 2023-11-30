@@ -6,10 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "./style.css";
 
-import type Slide from "../../interfaces/slide";
+import type Image from "../../interfaces/image";
 
 interface SlideProp {
-  slides: Slide[];
+  slides: Image[];
   wide?: boolean;
 }
 
@@ -36,7 +36,7 @@ const Slider = ({ slides, wide }: SlideProp) => {
             className={`h-364 w-full ${
               wide ? "sm:h-400" : "sm:h-600"
             } object-cover`}
-            alt="img"
+            alt={el.attributes.alternativeText ?? "img"}
           />
         </SwiperSlide>
       ))}

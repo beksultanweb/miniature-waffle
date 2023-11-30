@@ -9,10 +9,10 @@ const useScrollDirection = () => {
   const prevScrollY = useRef(0);
 
   useEffect(() => {
-    prevScrollY.current = window.pageYOffset;
+    prevScrollY.current = document.body.getBoundingClientRect().top * -1;
 
     const updateScrollDirection = () => {
-      const scrollY = window.pageYOffset;
+      const scrollY = document.body.getBoundingClientRect().top * -1;
 
       if (
         Math.abs(scrollY - prevScrollY.current) >= THRESHOLD_FOR_UPDATE_POSITION

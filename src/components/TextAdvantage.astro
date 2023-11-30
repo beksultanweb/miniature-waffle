@@ -1,0 +1,19 @@
+---
+import type Advantage from '../interfaces/advantages';
+
+interface Props {
+  adv: Advantage;
+}
+
+const { adv } = Astro.props;
+---
+
+<div class="flex gap-5 items-center">
+    <img src="/advantage.svg" alt="advantage" />
+    <div>
+        <p class="text-xl lg:text-28 leading-130% font-normal">
+        {adv.attributes.title}
+        </p>
+        <p class="text-lg font-normal">{adv.attributes.number}</p>
+    </div>
+</div>

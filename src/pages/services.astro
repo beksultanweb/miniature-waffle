@@ -5,6 +5,10 @@ import Layout from "../layouts/Layout.astro";
 import ServiceContainer from "../components/ServiceContainer.astro";
 
 import type Service from "../interfaces/service";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const services = await fetchApi<Service[]>({
   endpoint: "services?populate=*",
@@ -15,7 +19,7 @@ const services = await fetchApi<Service[]>({
   <h1
     class="text-center text-32 sm:text-64 uppercase font-medium pt-5 sm:pt-10"
   >
-    Услуги
+    {t('nav.services')}
   </h1>
   {services.map((service) => <ServiceContainer service={service} />)}
 </Layout>
